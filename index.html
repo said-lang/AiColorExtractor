@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>🎨 AiColorExtractor | Free Online Color Palette Generator for Print on Demand Designs</title>
   <meta name="description" content="AiColorExtractor is a free online color palette generator that helps print-on-demand creators, designers, and marketers extract colors, find hex codes, and improve branding for t-shirts, mugs, and product designs. Fast, simple, and accurate color picker tool for your POD business.">
-  <meta name="keywords" content="AiColorExtractor, color palette generator, print on demand design, POD design tool, free color picker, branding colors, hex code extractor, design marketing, t-shirt design colors, online color tool, palette finder, POD seller tools, HEX vs RGB, color tips, design inspiration">
+  <meta name="keywords" content="AiColorExtractor, color palette generator, print on demand design, POD design tool, free color picker, branding colors, hex code extractor, design marketing, t-shirt design colors, online color tool, palette finder, POD seller tools">
   <style>
     :root {
       --primary: #3b82f6;
@@ -107,12 +107,11 @@
       <a href="#privacy" onclick="showPage('privacy')">Privacy Policy</a>
       <a href="#terms" onclick="showPage('terms')">Terms of Use</a>
       <a href="#about" onclick="showPage('about')">About</a>
-      <a href="#faq" onclick="showPage('faq')">How to Use / FAQ</a>
-      <a href="#blog" onclick="showPage('blog')">Blog</a>
       <a href="#contact" onclick="showPage('contact')">Contact Us</a>
     </nav>
   </header>
 
+  <!-- Ads -->
   <div class="ad-left">Ad Space</div>
   <div class="ad-right">Ad Space</div>
 
@@ -131,14 +130,17 @@
       <h2 id="colorsTitle">Colors Used in This Design</h2>
       <div id="palette"></div>
 
+      <!-- Info Section: 6 paragraphs describing the tool -->
       <div class="info-section">
         <h2>Discover the Power of AiColorExtractor</h2>
-        <p>1. <strong>Instant Color Extraction:</strong> Upload any image and get its color palette in seconds...</p>
-        <p>2. <strong>Optimize Your Print-on-Demand Designs:</strong> Ensure visually appealing and cohesive colors...</p>
-        <p>3. <strong>Easy to Use for All Skill Levels:</strong> Intuitive and ready-to-use...</p>
-        <p>4. <strong>Improve Marketing & Branding:</strong> Maintain consistent branding...</p>
-        <p>5. <strong>Free Online Tool:</strong> Works directly in browser, accessible to everyone...</p>
-        <p>6. <strong>Boost Your Creativity:</strong> Experiment and create unique, trendy designs...</p>
+        <p>1. <strong>Instant Color Extraction:</strong> Upload any image and get its color palette in seconds. AiColorExtractor identifies the most dominant colors and their hex codes, helping you create professional POD designs quickly.</p>
+        <p>2. <strong>Optimize Your Print-on-Demand Designs:</strong> Whether designing t-shirts, mugs, or other products, AiColorExtractor ensures your designs have visually appealing and cohesive colors that enhance branding.</p>
+        <p>3. <strong>Easy to Use for All Skill Levels:</strong> AiColorExtractor is intuitive and requires no technical knowledge. Just upload your image and instantly receive a ready-to-use color palette.</p>
+        <p>4. <strong>Improve Marketing & Branding:</strong> Knowing the exact colors and hex codes allows you to maintain consistent branding across products and marketing materials, increasing recognition and professionalism.</p>
+        <p>5. <strong>Free Online Tool:</strong> No downloads or installations required. AiColorExtractor works directly in your browser, making it accessible for anyone looking to improve their POD workflow and design efficiency.</p>
+        <p>6. <strong>Boost Your Creativity:</strong> Experiment with colors extracted from your favorite images and create unique, trendy designs that stand out in the competitive print-on-demand market.</p>
+
+        <!-- CTA Paragraph -->
         <p style="text-align:center; font-weight:bold; color:var(--primary); font-size:1.2rem; margin-top:1.5rem;">
           🚀 Try AiColorExtractor now for free and take your POD designs to the next level!
         </p>
@@ -159,25 +161,8 @@
 
     <!-- About -->
     <section id="about" class="page" style="display:none;">
-      <h2>About AiColorExtractor</h2>
-      <p>AiColorExtractor was created to help Print-on-Demand businesses, designers, and e-commerce sellers quickly generate professional color palettes for better branding and marketing. Our goal is to simplify color selection, improve design workflow, and save time for creators. The tool is browser-based, free to use, and designed to support POD entrepreneurs in creating high-quality, visually consistent products that attract customers. We built AiColorExtractor because we believe that accurate color selection is key to successful product design and marketing.</p>
-    </section>
-
-    <!-- FAQ / How to Use -->
-    <section id="faq" class="page" style="display:none;">
-      <h2>How to Use AiColorExtractor / FAQ</h2>
-      <p>Step 1: Click the '+ Add Images' button and upload any image you want to extract colors from.</p>
-      <p>Step 2: Wait a few seconds while AiColorExtractor analyzes the image and generates a color palette.</p>
-      <p>Step 3: Click on any color box to copy its HEX code to your clipboard.</p>
-      <p>Step 4: Use the extracted colors in your POD designs, marketing materials, or branding projects.</p>
-      <p><strong>FAQ:</strong> AiColorExtractor works on all modern browsers and does not require downloads. All data processing occurs locally for privacy.</p>
-    </section>
-
-    <!-- Blog -->
-    <section id="blog" class="page" style="display:none;">
-      <h2>Blog</h2>
-      <p><strong>Article 1:</strong> What is the Difference Between HEX and RGB Codes?</p>
-      <p><strong>Article 2:</strong> Top 10 Color Palettes Inspired by Nature</p>
+      <h2>About</h2>
+      <p>AiColorExtractor was created to help Print-on-Demand businesses, designers, and e-commerce sellers quickly generate professional color palettes for better branding and marketing. Our goal is to simplify color selection, improve design workflow, and save time for creators. The tool is browser-based, free to use, and designed to support POD entrepreneurs in creating high-quality, visually consistent products that attract customers.</p>
     </section>
 
     <!-- Contact -->
@@ -220,4 +205,44 @@
         img.src = ev.target.result;
         img.onload = () => {
           const scale = Math.min(300 / img.width, 300 / img.height, 1),
-                width = Math.floor(img
+                width = Math.floor(img.width * scale),
+                height = Math.floor(img.height * scale);
+          canvas.width = width; canvas.height = height;
+          ctx.drawImage(img, 0, 0, width, height);
+          extractColors(width, height);
+        };
+      };
+      reader.readAsDataURL(file);
+    });
+    function extractColors(w, h) {
+      const data = ctx.getImageData(0, 0, w, h).data, map = new Map(), step = 10;
+      for (let i=0;i<data.length;i+=4*step) {
+        const key = `${data[i]},${data[i+1]},${data[i+2]}`;
+        map.set(key,(map.get(key)||0)+1);
+      }
+      const sorted = Array.from(map.entries()).sort((a,b)=>b[1]-a[1]).slice(0,6)
+        .map(([rgb]) => { const [r,g,b] = rgb.split(',').map(Number);
+          return {rgb:`rgb(${r},${g},${b})`,hex:rgbToHex(r,g,b)};});
+      displayPalette(sorted);
+    }
+    function rgbToHex(r,g,b){return"#"+[r,g,b].map(x=>x.toString(16).padStart(2,"0")).join("").toUpperCase();}
+    function displayPalette(colors){
+      palette.innerHTML=""; colorsTitle.style.display="block";
+      colors.forEach(c=>{
+        const box=document.createElement("div"); box.className="color-box"; box.style.backgroundColor=c.rgb;
+        const code=document.createElement("div"); code.className="color-code"; code.textContent=c.hex;
+        const msg=document.createElement("div"); msg.className="copied-msg"; msg.textContent="Copied!";
+        box.append(msg,code); palette.appendChild(box);
+        box.addEventListener("click",()=>{navigator.clipboard.writeText(c.hex).then(()=>{
+          msg.classList.add("visible"); setTimeout(()=>msg.classList.remove("visible"),1500);
+        });});
+      });
+    }
+    const form=document.getElementById("contactForm"), formMsg=document.getElementById("formMsg");
+    form?.addEventListener("submit",e=>{
+      e.preventDefault(); form.reset(); formMsg.style.display="block";
+      setTimeout(()=>formMsg.style.display="none",4000);
+    });
+  </script>
+</body>
+</html>
