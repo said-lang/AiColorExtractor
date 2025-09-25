@@ -96,9 +96,8 @@
       color: white; display: flex; align-items: center; justify-content: center;
       font-size: 14px; font-weight: bold;
     }
-    .info-section { margin-top: 3rem; }
-    .info-section h2 { text-align: center; color: var(--secondary); margin-bottom: 1.5rem; }
-    .info-section p { margin-bottom: 1rem; line-height: 1.6; }
+    .info-section { margin-top: 2rem; font-size: 1rem; line-height: 1.6; }
+    .info-section h2 { text-align: center; margin-bottom: 1rem; color: var(--secondary); }
   </style>
 </head>
 <body>
@@ -131,7 +130,7 @@
       <h2 id="colorsTitle">Colors Used in This Design</h2>
       <div id="palette"></div>
 
-      <!-- New info section about the tool -->
+      <!-- Info Section: 6 paragraphs describing the tool -->
       <div class="info-section">
         <h2>Discover the Power of POD Color Extractor</h2>
         <p>1. <strong>Instant Color Extraction:</strong> Upload any image and get its color palette in seconds. This tool identifies the most dominant colors and their hex codes, helping you create professional POD designs quickly.</p>
@@ -140,25 +139,30 @@
         <p>4. <strong>Improve Marketing & Branding:</strong> Knowing the exact colors and hex codes allows you to maintain consistent branding across your products and marketing materials, increasing recognition and professionalism.</p>
         <p>5. <strong>Free Online Tool:</strong> No downloads or installations are required. POD Color Extractor works directly in your browser, making it accessible for anyone looking to improve their POD workflow and design efficiency.</p>
         <p>6. <strong>Boost Your Creativity:</strong> Experiment with colors extracted from your favorite images and create unique, trendy designs that stand out in the competitive print-on-demand market.</p>
+
+        <!-- CTA Paragraph -->
+        <p style="text-align:center; font-weight:bold; color:var(--primary); font-size:1.2rem; margin-top:1.5rem;">
+          🚀 Try POD Color Extractor now for free and take your POD designs to the next level!
+        </p>
       </div>
     </section>
 
     <!-- Privacy -->
     <section id="privacy" class="page" style="display:none;">
       <h2>Privacy Policy</h2>
-      <p>We value your privacy. No images are stored or uploaded. All color extraction is processed locally on your device. Your personal information is never shared or sold. By using POD Color Extractor, you can confidently work on your designs knowing that your data and images are fully secure. We follow best practices to ensure user safety and privacy standards. For more details about how Google handles data and privacy, please visit <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy & Terms</a>.</p>
+      <p>We value your privacy. No images are stored or uploaded. All color extraction is processed locally on your device. We do not collect any personal information unless you voluntarily provide it through our contact form. Your data is kept secure and confidential. For more information, see <a href="https://policies.google.com/privacy" target="_blank">Google Privacy & Terms</a>.</p>
     </section>
 
     <!-- Terms -->
     <section id="terms" class="page" style="display:none;">
       <h2>Terms of Use</h2>
-      <p>POD Color Extractor is free to use for personal and professional projects. Users are responsible for the content they upload and the design work they create. We strive to provide accurate color extraction, but cannot guarantee 100% color precision across all devices and monitors. By using this tool, you agree not to misuse it for illegal purposes or distribute copyrighted materials without permission. The tool is provided "as is" without warranty, and we are not liable for any indirect damages from using the service. Continued use of the site constitutes acceptance of these terms.</p>
+      <p>POD Color Extractor is a free online tool designed for personal and professional projects. Users are responsible for the content they upload. We do not guarantee color accuracy for all devices or displays. By using this tool, you agree not to misuse it for illegal purposes and acknowledge that the developers are not liable for any loss, damage, or commercial disputes. Ensure compliance with your own business rules and local laws when using extracted colors for POD products.</p>
     </section>
 
     <!-- About -->
     <section id="about" class="page" style="display:none;">
       <h2>About</h2>
-      <p>POD Color Extractor was created to empower Print-on-Demand businesses, designers, and e-commerce sellers. With this tool, you can easily generate professional color palettes from any image, making your products visually appealing and enhancing your brand identity. The tool is designed for speed, simplicity, and accuracy, helping you save time while improving design quality. Whether you are working on t-shirts, mugs, or other print-on-demand products, POD Color Extractor provides an intuitive platform for designers of all skill levels to elevate their creative work and marketing potential.</p>
+      <p>POD Color Extractor was created to help Print-on-Demand businesses, designers, and e-commerce sellers quickly generate professional color palettes for better branding and marketing. Our goal is to simplify color selection, improve design workflow, and save time for creators. The tool is browser-based, free to use, and designed to support POD entrepreneurs in creating high-quality, visually consistent products that attract customers.</p>
     </section>
 
     <!-- Contact -->
@@ -218,24 +222,4 @@
       }
       const sorted = Array.from(map.entries()).sort((a,b)=>b[1]-a[1]).slice(0,6)
         .map(([rgb]) => { const [r,g,b] = rgb.split(',').map(Number);
-          return {rgb:`rgb(${r},${g},${b})`,hex:rgbToHex(r,g,b)};});
-      displayPalette(sorted);
-    }
-    function rgbToHex(r,g,b){return"#"+[r,g,b].map(x=>x.toString(16).padStart(2,"0")).join("").toUpperCase();}
-    function displayPalette(colors){
-      palette.innerHTML=""; colorsTitle.style.display="block";
-      colors.forEach(c=>{
-        const box=document.createElement("div"); box.className="color-box"; box.style.backgroundColor=c.rgb;
-        const code=document.createElement("div"); code.className="color-code"; code.textContent=c.hex;
-        const msg=document.createElement("div"); msg.className="copied-msg"; msg.textContent="Copied!";
-        box.append(msg,code); palette.appendChild(box);
-        box.addEventListener("click",()=>{navigator.clipboard.writeText(c.hex).then(()=>{
-          msg.classList.add("visible"); setTimeout(()=>msg.classList.remove("visible"),1500);
-        });});
-      });
-    }
-    const form=document.getElementById("contactForm"), formMsg=document.getElementById("formMsg");
-    form?.addEventListener("submit",e=>{e.preventDefault(); form.reset(); formMsg.style.display="block"; setTimeout(()=>formMsg.style.display="none",4000);});
-  </script>
-</body>
-</html>
+          return {rgb:`rgb(${r},${g},${b})`,hex:
