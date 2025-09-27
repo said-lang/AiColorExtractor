@@ -32,8 +32,10 @@
       align-items: center;
       box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     }
-    header img.logo {
-      height: 40px; margin-right: 10px; cursor: pointer;
+    header .icon {
+      font-size: 2rem;
+      margin-right: 10px;
+      cursor: pointer;
     }
     header h1 { margin: 0; font-size: 1.6rem; cursor: pointer; }
     nav { margin-left: auto; }
@@ -86,11 +88,17 @@
       padding: 0.6rem 1rem; border: none; border-radius: 5px;
       background: var(--secondary); color: #fff; font-weight: bold; cursor: pointer;
     }
+    .form-group { margin-bottom: 1rem; text-align: left; }
+    .form-group label { display: block; margin-bottom: 0.3rem; font-weight: bold; }
+    .form-group input, .form-group textarea {
+      width: 100%; padding: 0.6rem; border-radius: 6px; border: 1px solid #ccc; font-size: 1rem;
+    }
+    .form-group textarea { min-height: 120px; }
   </style>
 </head>
 <body>
   <header>
-    <img src="https://via.placeholder.com/120x40?text=AiColorExtractor" alt="AiColorExtractor Logo" class="logo" onclick="showPage('home')">
+    <div class="icon" onclick="showPage('home')">🎨</div>
     <h1 onclick="showPage('home')">AiColorExtractor</h1>
     <nav>
       <a href="#home" onclick="showPage('home')">Home</a>
@@ -114,59 +122,56 @@
       <canvas id="canvas" style="display:none;"></canvas>
       <h2 id="colorsTitle">Extracted Colors</h2>
       <div id="palette"></div>
-
-      <!-- SEO long content -->
-      <section>
-        <h2>Why Choose AiColorExtractor?</h2>
-        <p>AiColorExtractor is more than just a color picker. It is a powerful online tool that instantly extracts accurate HEX and RGB color codes from any uploaded image. Whether you’re a professional designer, a marketer, or a POD seller, this tool helps you build strong branding and design consistency.</p>
-
-        <h2>Fast and Reliable Color Extraction</h2>
-        <p>With advanced pixel scanning, AiColorExtractor identifies the most dominant and relevant colors in your image. This ensures that you get a clean, precise, and ready-to-use color palette for your projects.</p>
-
-        <h2>Perfect for Print-on-Demand Sellers</h2>
-        <p>If you sell on platforms like Merch by Amazon, Redbubble, or Etsy, accurate color extraction is critical. AiColorExtractor provides quick HEX and RGB palettes that help you match colors with your product designs and stand out in competitive marketplaces.</p>
-
-        <h2>Supports HEX and RGB Formats</h2>
-        <p>Our tool supports both HEX and RGB color codes, making it compatible with all major design platforms, including Photoshop, Canva, Illustrator, and e-commerce dashboards.</p>
-
-        <h2>Boost Your Branding</h2>
-        <p>Colors play a crucial role in branding. By extracting consistent palettes, AiColorExtractor ensures your logos, t-shirts, mugs, and digital ads all have unified and professional colors that attract attention and build trust.</p>
-
-        <h2>Save Time and Improve Productivity</h2>
-        <p>No need to waste hours guessing or testing colors manually. With AiColorExtractor, you get instant results that help speed up your workflow and increase your productivity as a designer or marketer.</p>
-
-        <h2>Completely Free and Secure</h2>
-        <p>AiColorExtractor works entirely in your browser. Your images never leave your device, ensuring 100% privacy and security. The tool is free to use for personal and professional projects.</p>
-      </section>
     </section>
 
-    <!-- FAQ -->
+    <!-- FAQ / How it Works -->
     <section id="faq" class="page" style="display:none;">
       <h2>How AiColorExtractor Works</h2>
-      <p>Simply upload an image, and AiColorExtractor will analyze it pixel by pixel to find the most dominant colors. The results are shown instantly as HEX and RGB codes. Click any color box to copy it to your clipboard.</p>
-      <p>This process is secure and private, as all calculations happen locally in your browser. No files are uploaded or stored on our servers.</p>
+      <p>AiColorExtractor works in your browser to ensure speed and privacy. Once you upload an image, our algorithm scans the pixels and identifies the dominant colors with precision. The results are displayed instantly as HEX and RGB codes.</p>
+      <p>Step 1: Click “Upload an Image” and select any photo from your computer.</p>
+      <p>Step 2: The tool automatically extracts the main colors and generates a palette.</p>
+      <p>Step 3: Each color is shown with HEX and RGB formats for easy use in design tools.</p>
+      <p>Step 4: Click on any color to copy its HEX code to your clipboard instantly.</p>
+      <p>This simple workflow makes AiColorExtractor perfect for designers, marketers, POD sellers, and developers who want accurate colors without extra steps.</p>
+      <p>Unlike other tools, AiColorExtractor does not upload your images to servers. Everything happens locally, ensuring privacy and faster results.</p>
+      <p>Supported formats include <strong>HEX</strong> for web design and <strong>RGB</strong> for design platforms like Photoshop, Illustrator, and Canva.</p>
     </section>
 
     <!-- Blog -->
     <section id="blog" class="page" style="display:none;">
       <h2>Blog</h2>
-      <article>
-        <h3>What’s the Difference Between HEX and RGB Codes?</h3>
-        <p>HEX codes are six-digit representations of colors used in web design, while RGB codes define colors based on their Red, Green, and Blue values. Both are supported by AiColorExtractor.</p>
-      </article>
-      <article>
-        <h3>Top 10 Color Palettes Inspired by Nature</h3>
-        <p>Nature offers endless inspiration for designers. Explore earthy browns, vibrant greens, and ocean blues to elevate your creative projects with natural palettes.</p>
-      </article>
+      <p>1. AiColorExtractor helps designers find exact HEX and RGB codes from images, giving them full control over branding and creative projects.</p>
+      <p>2. This tool is ideal for print-on-demand sellers who need accurate colors for t-shirt designs, mugs, and digital artwork.</p>
+      <p>3. SEO-optimized color palettes improve your online shop appearance, making products more attractive and professional.</p>
+      <p>4. AiColorExtractor supports HEX and RGB formats, making it compatible with Photoshop, Illustrator, and Canva.</p>
+      <p>5. Marketers use AiColorExtractor to keep branding consistent across ads, banners, and social media posts.</p>
+      <p>6. The tool is completely free and requires no account registration, making it accessible to everyone.</p>
+      <p>7. Extracting colors is instant and accurate, which saves time for designers and marketers working under deadlines.</p>
+      <p>8. AiColorExtractor boosts creativity by allowing users to generate unique palettes inspired by real-life photos.</p>
+      <p>9. Designers can use extracted palettes to improve UI/UX consistency in apps and websites.</p>
+      <p>10. AiColorExtractor combines simplicity, accuracy, and security, making it one of the best online color tools available today.</p>
     </section>
 
     <!-- Contact -->
     <section id="contact" class="page" style="display:none;">
       <h2>Contact Us</h2>
       <form id="contactForm">
-        <input type="text" id="name" placeholder="Your Name" required />
-        <input type="email" id="email" placeholder="Your Email" required />
-        <textarea id="message" placeholder="Write your message here..." required></textarea>
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" placeholder="Enter your name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Your Email</label>
+          <input type="email" id="email" placeholder="Enter your email" required />
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" placeholder="Subject of your message" required />
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="Write your message here..." required></textarea>
+        </div>
         <button type="submit" class="upload-label">Send Message</button>
       </form>
       <p id="formMsg" style="margin-top:1rem; font-weight:bold; color:green; display:none;">✅ Thank you! Your message has been sent.</p>
