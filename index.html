@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="google-site-verification" content="8hR6RZf_ZT4UrLHwiN4_kn3KZh06wkKg5Bd_VshePpg" />
   <title>AiColorExtractor | Free Online Color Palette & HEX/RGB Extractor Tool</title>
-  <meta name="description" content="AiColorExtractor is a free online color extraction tool for designers, marketers, and POD sellers. Instantly extract HEX and RGB color codes from any image, create professional palettes, and improve branding for your designs." />
-  <meta name="keywords" content="AiColorExtractor, color extractor, HEX color codes, RGB color codes, color palette generator, print on demand design, free color tool, branding colors, design tool online, color picker, palette finder">
+  <meta name="description" content="AiColorExtractor is a free online color extractor tool that lets you generate professional HEX and RGB palettes from any image. Perfect for designers, marketers, and POD sellers who want accurate colors for branding, product designs, and creative projects." />
+  <meta name="keywords" content="AiColorExtractor, color extractor, HEX colors, RGB codes, color palette generator, print on demand design, branding colors, design tool, online color picker, palette finder, t-shirt design colors">
   <style>
     :root {
       --primary: #3b82f6;
@@ -31,6 +31,9 @@
       display: flex;
       align-items: center;
       box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    header img.logo {
+      height: 40px; margin-right: 10px; cursor: pointer;
     }
     header h1 { margin: 0; font-size: 1.6rem; cursor: pointer; }
     nav { margin-left: auto; }
@@ -68,54 +71,40 @@
       background: rgba(0,0,0,0.65); color: white;
       padding: 4px 8px; border-radius: 5px; font-size: 14px; margin-top: 10px;
     }
-    .copied-msg {
-      position: absolute; top: 10px; background: var(--accent);
-      color: white; font-size: 12px; padding: 2px 6px; border-radius: 5px;
-      opacity: 0; transition: opacity 0.3s;
-    }
-    .copied-msg.visible { opacity: 1; }
+    h2, h3 { color: #000; margin-top: 1.4rem; }
     footer {
       background: linear-gradient(90deg, var(--primary), var(--accent));
-      color: white; text-align: center; padding: 1rem; font-size: 0.9rem;
+      color: white; text-align: center; padding: 1.5rem; font-size: 0.85rem;
     }
-    .ad-left, .ad-right {
-      position: absolute; top: 120px; width: 120px; height: 600px; background: #fde68a;
-      color: #b45309; display: flex; align-items: center; justify-content: center;
-      font-size: 14px; border: 2px solid #fcd34d; border-radius: 6px; font-weight: bold;
+    footer nav a { color: #fff; margin: 0 0.7rem; font-size: 0.85rem; text-decoration: none; }
+    footer nav a:hover { text-decoration: underline; }
+    .newsletter { margin-top: 1rem; }
+    .newsletter input {
+      padding: 0.6rem; border: none; border-radius: 5px; margin-right: 0.5rem; width: 250px;
     }
-    .ad-left { left: 10px; }
-    .ad-right { right: 10px; }
-    .ad-bottom {
-      width: 100%; height: 80px;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-      color: white; display: flex; align-items: center; justify-content: center;
-      font-size: 14px; font-weight: bold;
+    .newsletter button {
+      padding: 0.6rem 1rem; border: none; border-radius: 5px;
+      background: var(--secondary); color: #fff; font-weight: bold; cursor: pointer;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1 onclick="showPage('home')">🎨 AiColorExtractor</h1>
+    <img src="https://via.placeholder.com/120x40?text=AiColorExtractor" alt="AiColorExtractor Logo" class="logo" onclick="showPage('home')">
+    <h1 onclick="showPage('home')">AiColorExtractor</h1>
     <nav>
       <a href="#home" onclick="showPage('home')">Home</a>
-      <a href="#faq" onclick="showPage('faq')">FAQ</a>
+      <a href="#faq" onclick="showPage('faq')">How it Works</a>
       <a href="#blog" onclick="showPage('blog')">Blog</a>
-      <a href="#about" onclick="showPage('about')">About</a>
-      <a href="#privacy" onclick="showPage('privacy')">Privacy Policy</a>
-      <a href="#terms" onclick="showPage('terms')">Terms of Use</a>
       <a href="#contact" onclick="showPage('contact')">Contact</a>
     </nav>
   </header>
-
-  <!-- Ads -->
-  <div class="ad-left">Ad Space</div>
-  <div class="ad-right">Ad Space</div>
 
   <main class="container">
     <!-- Home -->
     <section id="home" class="page">
       <div class="intro">
-        <p>Welcome to <strong>AiColorExtractor</strong> – the free online tool that lets you extract color palettes, HEX, and RGB codes from any image in seconds. Perfect for designers, POD sellers, and marketers who want accurate and professional colors for their projects.</p>
+        <p>Welcome to <strong>AiColorExtractor</strong>, the ultimate free online tool for extracting HEX and RGB color codes from images. Perfect for designers, print-on-demand sellers, and digital marketers who want professional, accurate, and fast color palettes.</p>
       </div>
       <div class="upload-box">
         <label for="imageUploader" class="upload-label">+ Upload an Image</label>
@@ -123,29 +112,39 @@
         <p id="fileStatus">No files have been selected yet</p>
       </div>
       <canvas id="canvas" style="display:none;"></canvas>
-      <h2 id="colorsTitle">Colors Extracted from Your Image</h2>
+      <h2 id="colorsTitle">Extracted Colors</h2>
       <div id="palette"></div>
 
-      <!-- SEO Content -->
+      <!-- SEO long content -->
       <section>
-        <h2>How AiColorExtractor Works</h2>
-        <p>Our color extractor tool scans every pixel in your uploaded image to identify the most dominant and relevant colors. These colors are then converted into HEX and RGB codes for easy use in your designs and branding projects.</p>
+        <h2>Why Choose AiColorExtractor?</h2>
+        <p>AiColorExtractor is more than just a color picker. It is a powerful online tool that instantly extracts accurate HEX and RGB color codes from any uploaded image. Whether you’re a professional designer, a marketer, or a POD seller, this tool helps you build strong branding and design consistency.</p>
 
-        <h2>Benefits of Using AiColorExtractor</h2>
-        <p>Designers and print-on-demand sellers save time and effort by generating professional palettes instantly. Whether you’re creating t-shirts, mugs, logos, or websites, AiColorExtractor ensures color accuracy and consistency.</p>
+        <h2>Fast and Reliable Color Extraction</h2>
+        <p>With advanced pixel scanning, AiColorExtractor identifies the most dominant and relevant colors in your image. This ensures that you get a clean, precise, and ready-to-use color palette for your projects.</p>
 
-        <h3>Supported Formats</h3>
-        <p>The tool supports <strong>HEX</strong> and <strong>RGB</strong> formats, making it compatible with most design tools, e-commerce platforms, and marketing systems.</p>
+        <h2>Perfect for Print-on-Demand Sellers</h2>
+        <p>If you sell on platforms like Merch by Amazon, Redbubble, or Etsy, accurate color extraction is critical. AiColorExtractor provides quick HEX and RGB palettes that help you match colors with your product designs and stand out in competitive marketplaces.</p>
+
+        <h2>Supports HEX and RGB Formats</h2>
+        <p>Our tool supports both HEX and RGB color codes, making it compatible with all major design platforms, including Photoshop, Canva, Illustrator, and e-commerce dashboards.</p>
+
+        <h2>Boost Your Branding</h2>
+        <p>Colors play a crucial role in branding. By extracting consistent palettes, AiColorExtractor ensures your logos, t-shirts, mugs, and digital ads all have unified and professional colors that attract attention and build trust.</p>
+
+        <h2>Save Time and Improve Productivity</h2>
+        <p>No need to waste hours guessing or testing colors manually. With AiColorExtractor, you get instant results that help speed up your workflow and increase your productivity as a designer or marketer.</p>
+
+        <h2>Completely Free and Secure</h2>
+        <p>AiColorExtractor works entirely in your browser. Your images never leave your device, ensuring 100% privacy and security. The tool is free to use for personal and professional projects.</p>
       </section>
     </section>
 
     <!-- FAQ -->
     <section id="faq" class="page" style="display:none;">
-      <h2>How to Use AiColorExtractor</h2>
-      <p>1. Upload your image by clicking the “Upload an Image” button.</p>
-      <p>2. Wait for the tool to process your file locally (your data is never uploaded to our servers).</p>
-      <p>3. Instantly view the most used HEX and RGB color codes from your image.</p>
-      <p>4. Click any color to copy its code to your clipboard for easy use.</p>
+      <h2>How AiColorExtractor Works</h2>
+      <p>Simply upload an image, and AiColorExtractor will analyze it pixel by pixel to find the most dominant colors. The results are shown instantly as HEX and RGB codes. Click any color box to copy it to your clipboard.</p>
+      <p>This process is secure and private, as all calculations happen locally in your browser. No files are uploaded or stored on our servers.</p>
     </section>
 
     <!-- Blog -->
@@ -153,30 +152,12 @@
       <h2>Blog</h2>
       <article>
         <h3>What’s the Difference Between HEX and RGB Codes?</h3>
-        <p>HEX codes are six-digit representations of colors used in web and graphic design, while RGB codes define colors based on their Red, Green, and Blue values. Both formats are supported by AiColorExtractor.</p>
+        <p>HEX codes are six-digit representations of colors used in web design, while RGB codes define colors based on their Red, Green, and Blue values. Both are supported by AiColorExtractor.</p>
       </article>
       <article>
         <h3>Top 10 Color Palettes Inspired by Nature</h3>
-        <p>Nature offers an endless variety of color inspirations. From lush greens to deep ocean blues, explore color palettes that can elevate your designs.</p>
+        <p>Nature offers endless inspiration for designers. Explore earthy browns, vibrant greens, and ocean blues to elevate your creative projects with natural palettes.</p>
       </article>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="page" style="display:none;">
-      <h2>About AiColorExtractor</h2>
-      <p>AiColorExtractor was created to help designers, marketers, and e-commerce sellers save time and achieve accurate branding colors. By focusing on simplicity and speed, this free tool empowers anyone to extract professional color palettes in seconds.</p>
-    </section>
-
-    <!-- Privacy -->
-    <section id="privacy" class="page" style="display:none;">
-      <h2>Privacy Policy</h2>
-      <p>Your privacy is important to us. AiColorExtractor processes images directly in your browser. No files are uploaded or stored on our servers. For more details, please also review <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</p>
-    </section>
-
-    <!-- Terms -->
-    <section id="terms" class="page" style="display:none;">
-      <h2>Terms of Use</h2>
-      <p>AiColorExtractor is free to use for personal and professional projects. We do not guarantee absolute accuracy across all devices or monitors. By using this site, you agree that we are not responsible for any issues resulting from color extraction or interpretation.</p>
     </section>
 
     <!-- Contact -->
@@ -192,8 +173,39 @@
     </section>
   </main>
 
-  <div class="ad-bottom">Ad Space</div>
-  <footer>&copy; 2025 AiColorExtractor. All rights reserved.</footer>
+  <footer>
+    <p>&copy; 2025 AiColorExtractor. All rights reserved.</p>
+    <nav>
+      <a href="#about" onclick="showPage('about')">About</a>
+      <a href="#privacy" onclick="showPage('privacy')">Privacy Policy</a>
+      <a href="#terms" onclick="showPage('terms')">Terms of Use</a>
+      <a href="#faq" onclick="showPage('faq')">FAQ</a>
+    </nav>
+    <div class="newsletter">
+      <p>📩 Subscribe to our newsletter for updates:</p>
+      <input type="email" placeholder="Enter your email" />
+      <button>Subscribe</button>
+    </div>
+  </footer>
+
+  <!-- Hidden pages expanded -->
+  <section id="about" class="page" style="display:none; padding:2rem;">
+    <h2>About AiColorExtractor</h2>
+    <p>AiColorExtractor was built to empower designers, print-on-demand sellers, and digital marketers with a fast and accurate color extraction tool. Our mission is to simplify your creative process by providing instant access to HEX and RGB codes from any image.</p>
+    <p>By offering this free tool, we aim to help small businesses, e-commerce sellers, and independent creators improve their branding and productivity.</p>
+  </section>
+
+  <section id="privacy" class="page" style="display:none; padding:2rem;">
+    <h2>Privacy Policy</h2>
+    <p>We value your privacy. AiColorExtractor processes images locally in your browser; no data is ever uploaded to our servers. This ensures that your files remain safe, secure, and private.</p>
+    <p>For more details, you may also review <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>.</p>
+  </section>
+
+  <section id="terms" class="page" style="display:none; padding:2rem;">
+    <h2>Terms of Use</h2>
+    <p>AiColorExtractor is provided as a free online service for both personal and professional projects. By using this tool, you agree not to misuse it or attempt to exploit it beyond its intended functionality.</p>
+    <p>We do not guarantee 100% accuracy across all devices or monitors, and we are not liable for design outcomes resulting from extracted colors.</p>
+  </section>
 
   <script>
     function showPage(pageId) {
@@ -242,11 +254,8 @@
       colors.forEach(c=>{
         const box=document.createElement("div"); box.className="color-box"; box.style.backgroundColor=c.rgb;
         const code=document.createElement("div"); code.className="color-code"; code.textContent=c.hex;
-        const msg=document.createElement("div"); msg.className="copied-msg"; msg.textContent="Copied!";
-        box.append(msg,code); palette.appendChild(box);
-        box.addEventListener("click",()=>{navigator.clipboard.writeText(c.hex).then(()=>{
-          msg.classList.add("visible"); setTimeout(()=>msg.classList.remove("visible"),1500);
-        });});
+        box.append(code); palette.appendChild(box);
+        box.addEventListener("click",()=>{navigator.clipboard.writeText(c.hex)});
       });
     }
     const form=document.getElementById("contactForm"), formMsg=document.getElementById("formMsg");
