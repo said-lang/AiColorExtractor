@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name="google-site-verification" content="8hR6RZf_ZT4UrLHwiN4_kn3KZh06wkKg5Bd_VshePpg" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AiColorExtractor | Free Online Color Palette & HEX/RGB Extractor Tool</title>
-  <meta name="description" content="AiColorExtractor is a free online color extractor tool that generates professional HEX and RGB palettes from any image. Perfect for designers, marketers, and POD sellers." />
-  <meta name="keywords" content="AiColorExtractor, color extractor, HEX colors, RGB codes, color palette generator, online color picker, branding colors, design tool">
+  <title>🎨 AiColorExtractor | Free Online Color Palette Generator for Print on Demand Designs</title>
+  <meta name="description" content="AiColorExtractor is a free online color extractor tool for designers, print-on-demand sellers, and marketers. Quickly generate accurate HEX and RGB color palettes from any image. Boost your product branding, t-shirt, mug, and POD designs with our fast and reliable color picker tool.">
+  <meta name="keywords" content="AiColorExtractor, color extractor, color palette generator, HEX, RGB, print on demand tool, POD design, free online design tools, branding colors, t-shirt design colors, online color picker, palette finder">
   <style>
     :root {
       --primary: #3b82f6;
@@ -14,246 +15,102 @@
       --bg: #ffffff;
       --text: #1f2937;
     }
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-    header {
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-      color: white;
-      padding: 1rem 2rem;
-      display: flex;
-      align-items: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    }
-    header .icon {
-      font-size: 2rem;
-      margin-right: 10px;
-      cursor: pointer;
-    }
-    header h1 { margin: 0; font-size: 1.6rem; cursor: pointer; }
-    nav { margin-left: auto; }
-    nav a {
-      color: white; margin-left: 1.5rem; text-decoration: none; font-weight: 600; font-size: 1rem;
-    }
-    nav a:hover { text-decoration: underline; }
-    .container {
-      max-width: 1000px; margin: 2rem auto; padding: 2rem; background: #fff;
-      border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); flex: 1;
-    }
-    .intro { text-align: center; margin-bottom: 1.5rem; font-size: 1.1rem; line-height: 1.6; }
-    .upload-box {
-      margin: 2rem auto; width: 80%; padding: 2.5rem 1rem; border: 2px dashed var(--primary);
-      border-radius: 10px; background: #eff6ff; text-align: center;
-    }
-    .upload-label {
-      display: inline-block; background: var(--primary); color: #fff;
-      padding: 0.7rem 1.4rem; border-radius: 8px; cursor: pointer;
-      font-size: 1rem; font-weight: 600; transition: background 0.3s ease;
-    }
-    .upload-label:hover { background: var(--secondary); }
-    #imageUploader { display: none; }
-    #fileStatus { margin-top: 1rem; font-size: 1rem; color: #555; }
-    #colorsTitle { font-size: 1.6rem; margin: 2rem 0 1rem; text-align: center; display: none; color: var(--secondary); }
-    #palette { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
-    .color-box {
-      width: 130px; height: 130px; border-radius: 12px;
-      display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
-      padding: 0.4rem; box-shadow: 0 5px 12px rgba(0,0,0,0.15);
-      cursor: pointer; transition: transform 0.2s ease;
-    }
-    .color-box:hover { transform: scale(1.07); }
-    .color-code {
-      background: rgba(0,0,0,0.65); color: white;
-      padding: 4px 8px; border-radius: 5px; font-size: 14px; margin-top: 10px;
-    }
-    h2, h3 { color: #000; margin-top: 1.4rem; }
-    footer {
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      color: white; text-align: center; padding: 1.5rem; font-size: 0.85rem; margin-top: auto;
-    }
-    footer nav a { color: #fff; margin: 0 0.7rem; font-size: 0.85rem; text-decoration: none; }
-    footer nav a:hover { text-decoration: underline; }
-    .newsletter { margin-top: 1rem; }
-    .newsletter input {
-      padding: 0.6rem; border: none; border-radius: 5px; margin-right: 0.5rem; width: 250px;
-    }
-    .newsletter button {
-      padding: 0.6rem 1rem; border: none; border-radius: 5px;
-      background: var(--secondary); color: #fff; font-weight: bold; cursor: pointer;
-    }
-    /* Contact Page */
-    #contactForm {
-      background: #f9fafb;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      max-width: 700px;
-      margin: auto;
-    }
-    .form-group { margin-bottom: 1.5rem; text-align: left; }
-    .form-group label { display: block; margin-bottom: 0.5rem; font-weight: bold; color: #000; }
-    .form-group input, .form-group textarea {
-      width: 100%; padding: 1rem; border-radius: 8px;
-      border: 1px solid #ccc; font-size: 1rem; background: #fff;
-    }
-    .form-group textarea { min-height: 180px; }
-    #contactForm button {
-      background: var(--primary);
-      color: #fff;
-      padding: 0.9rem 1.8rem;
-      font-size: 1rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    #contactForm button:hover { background: var(--secondary); }
-    .subpage { display: none; margin: 2rem auto; padding: 2rem; max-width: 900px; background: #fff; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
-    .subpage h2 { margin-bottom: 1rem; }
+    body {margin:0; font-family:'Segoe UI', sans-serif; background:var(--bg); color:var(--text); display:flex; flex-direction:column; min-height:100vh;}
+    header {background:linear-gradient(90deg, var(--primary), var(--secondary)); color:white; padding:1rem 2rem; display:flex; align-items:center; box-shadow:0 4px 10px rgba(0,0,0,0.15);}
+    header h1 {margin:0; font-size:1.6rem; cursor:pointer;}
+    nav {margin-left:auto;}
+    nav a {color:white; margin-left:1.5rem; text-decoration:none; font-weight:600; font-size:1rem;}
+    nav a:hover {text-decoration:underline;}
+    .container {max-width:1000px; margin:2rem auto; padding:2rem; background:#fff; border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,0.1); flex:1;}
+    .intro {text-align:center; margin-bottom:1.5rem; font-size:1.1rem; line-height:1.6;}
+    .upload-box {margin:2rem auto; width:80%; padding:2.5rem 1rem; border:2px dashed var(--primary); border-radius:10px; background:#eff6ff; text-align:center;}
+    .upload-label {display:inline-block; background:var(--primary); color:#fff; padding:0.7rem 1.4rem; border-radius:8px; cursor:pointer; font-size:1rem; font-weight:600; transition:background 0.3s ease;}
+    .upload-label:hover {background:var(--secondary);}
+    #imageUploader {display:none;}
+    #fileStatus {margin-top:1rem; font-size:1rem; color:#555;}
+    #colorsTitle {font-size:1.6rem; margin:2rem 0 1rem; text-align:center; display:none; color:var(--secondary);}
+    #palette {display:flex; flex-wrap:wrap; justify-content:center; gap:1rem;}
+    .color-box {width:130px; height:130px; border-radius:12px; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; padding:0.4rem; box-shadow:0 5px 12px rgba(0,0,0,0.15); cursor:pointer; transition:transform 0.2s ease;}
+    .color-box:hover {transform:scale(1.07);}
+    .color-code {background:rgba(0,0,0,0.65); color:white; padding:4px 8px; border-radius:5px; font-size:14px; margin-top:10px;}
+    .copied-msg {position:absolute; top:10px; background:var(--accent); color:white; font-size:12px; padding:2px 6px; border-radius:5px; opacity:0; transition:opacity 0.3s;}
+    .copied-msg.visible {opacity:1;}
+    #contactForm input, #contactForm textarea {width:100%; padding:0.9rem; margin-bottom:1rem; border:2px solid var(--primary); border-radius:8px; font-size:1rem; background:#f0f9ff;}
+    #contactForm textarea {height:220px; resize:vertical;}
+    footer {background:linear-gradient(90deg, var(--primary), var(--accent)); color:white; text-align:center; padding:1rem; font-size:0.9rem; display:flex; flex-direction:column; align-items:center;}
+    .footer-links {margin-top:0.5rem; display:flex; gap:1rem; font-size:0.8rem;}
+    .footer-links a {color:white; text-decoration:none;}
+    .footer-links a:hover {text-decoration:underline;}
+    .ad-left, .ad-right {position:absolute; top:120px; width:120px; height:600px; background:#fde68a; color:#b45309; display:flex; align-items:center; justify-content:center; font-size:14px; border:2px solid #fcd34d; border-radius:6px; font-weight:bold;}
+    .ad-left {left:10px;} .ad-right {right:10px;}
+    .ad-bottom {width:100%; height:80px; background:linear-gradient(90deg,var(--primary), var(--secondary)); color:white; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:bold;}
+    h2.section-title {color:black; margin-top:2rem; text-align:left;}
+    .cta-paragraph {margin-top:1rem; font-weight:bold; font-size:1.1rem; text-align:center; color:var(--secondary);}
   </style>
 </head>
 <body>
   <header>
-    <div class="icon" onclick="showPage('home')">🎨</div>
-    <h1 onclick="showPage('home')">AiColorExtractor</h1>
+    <h1 onclick="showPage('home')">🎨 AiColorExtractor</h1>
     <nav>
-      <a href="#home" onclick="showPage('home')">Home</a>
-      <a href="#faq" onclick="showPage('faq')">How it Works</a>
-      <a href="#blog" onclick="showPage('blog')">Blog</a>
-      <a href="#contact" onclick="showPage('contact')">Contact</a>
+      <a href="#how" onclick="showPage('how')">How It Works</a>
     </nav>
   </header>
+
+  <!-- Ads -->
+  <div class="ad-left">Ad Space</div>
+  <div class="ad-right">Ad Space</div>
 
   <main class="container">
     <!-- Home -->
     <section id="home" class="page">
       <div class="intro">
-        <p>Welcome to <strong>AiColorExtractor</strong>, the ultimate free online tool for extracting HEX and RGB color codes from images. Perfect for designers, print-on-demand sellers, and digital marketers who want professional, accurate, and fast color palettes.</p>
+        <p>Extract colors from any image instantly. AiColorExtractor helps designers, POD sellers, and marketers generate precise HEX and RGB color palettes for professional product designs, t-shirts, mugs, and more.</p>
       </div>
       <div class="upload-box">
-        <label for="imageUploader" class="upload-label">+ Upload an Image</label>
+        <label for="imageUploader" class="upload-label">+ Add Images</label>
         <input type="file" id="imageUploader" accept="image/*" />
         <p id="fileStatus">No files have been selected yet</p>
       </div>
       <canvas id="canvas" style="display:none;"></canvas>
-      <h2 id="colorsTitle">Extracted Colors</h2>
+      <h2 id="colorsTitle">Colors Used in This Design</h2>
       <div id="palette"></div>
+
+      <h2 class="section-title">Discover AiColorExtractor Benefits</h2>
+      <p>AiColorExtractor allows instant extraction of vibrant color palettes, helping you match colors accurately in your POD products and designs.</p>
+      <p>Support your design workflow with a fast, online HEX and RGB color picker for t-shirts, mugs, and digital graphics.</p>
+      <p>Boost your branding and product appeal by analyzing and generating color combinations effortlessly.</p>
+      <p>Easy-to-use interface makes color extraction intuitive, even for beginners and e-commerce sellers.</p>
+      <p>Supports multiple image formats and provides accurate HEX and RGB codes to streamline your design process.</p>
+      <p>Enhance your marketing visuals and product listings with professional-level color consistency.</p>
+      <p>Free and online tool with no registration required, ensuring accessibility for all creators.</p>
+      <p class="cta-paragraph">Try AiColorExtractor now for free and elevate your POD designs to the next level!</p>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" class="page" style="display:none;">
-      <h2>Contact Us</h2>
-      <form id="contactForm">
-        <div class="form-group">
-          <label for="name">Your Name</label>
-          <input type="text" id="name" placeholder="Enter your name" required />
-        </div>
-        <div class="form-group">
-          <label for="email">Your Email</label>
-          <input type="email" id="email" placeholder="Enter your email" required />
-        </div>
-        <div class="form-group">
-          <label for="subject">Subject</label>
-          <input type="text" id="subject" placeholder="Subject of your message" required />
-        </div>
-        <div class="form-group">
-          <label for="message">Message</label>
-          <textarea id="message" placeholder="Write your message here..." required></textarea>
-        </div>
-        <button type="submit">Send Message</button>
-      </form>
-      <p id="formMsg" style="margin-top:1rem; font-weight:bold; color:green; display:none;">✅ Thank you! Your message has been sent.</p>
+    <!-- How It Works -->
+    <section id="how" class="page" style="display:none;">
+      <h2 class="section-title">How AiColorExtractor Works</h2>
+      <p>Upload your image using the "+ Add Images" button. The tool instantly analyzes the image pixels to detect dominant colors.</p>
+      <p>The extracted colors are displayed in both HEX and RGB formats, allowing precise replication for your POD designs.</p>
+      <p>You can click on each color to copy it to your clipboard, streamlining your workflow in design software.</p>
+      <p>Supports batch processing and works efficiently even with large images.</p>
+      <p>Designed for designers, marketers, and POD sellers to save time and improve color consistency across products.</p>
+      <p>Free online platform – no installation needed, works in all modern browsers.</p>
     </section>
 
-    <!-- Subpages -->
-    <section id="about" class="subpage"><h2>About AiColorExtractor</h2><p>This tool was built to help designers...</p></section>
-    <section id="privacy" class="subpage"><h2>Privacy Policy</h2><p>We respect your privacy...</p></section>
-    <section id="terms" class="subpage"><h2>Terms of Use</h2><p>By using AiColorExtractor...</p></section>
-    <section id="faq" class="subpage"><h2>FAQ - How it Works</h2><p>Upload an image...</p></section>
-    <section id="blog" class="subpage"><h2>Blog</h2><p>Coming soon...</p></section>
-  </main>
+    <!-- About -->
+    <section id="about" class="page" style="display:none;">
+      <h2 class="section-title">About AiColorExtractor</h2>
+      <p>AiColorExtractor was created to empower designers and print-on-demand sellers with a fast, reliable color extraction tool.</p>
+      <p>Our mission is to improve design efficiency, enhance product branding, and provide an accessible online tool for everyone.</p>
+      <p>The tool is perfect for t-shirt, mug, and product designers looking for precise HEX and RGB color palettes.</p>
+      <p>We emphasize user privacy: all images are processed locally on your device.</p>
+      <p>We are committed to continuous improvement, adding features based on user feedback to enhance productivity.</p>
+    </section>
 
-  <footer>
-    <p>&copy; 2025 AiColorExtractor. All rights reserved.</p>
-    <nav>
-      <a href="#about" onclick="showSub('about')">About</a>
-      <a href="#privacy" onclick="showSub('privacy')">Privacy Policy</a>
-      <a href="#terms" onclick="showSub('terms')">Terms of Use</a>
-      <a href="#faq" onclick="showSub('faq')">FAQ</a>
-    </nav>
-    <div class="newsletter">
-      <p>📩 Subscribe to our newsletter for updates:</p>
-      <input type="email" placeholder="Enter your email" />
-      <button>Subscribe</button>
-    </div>
-  </footer>
-
-  <script>
-    function showPage(pageId) {
-      document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
-      document.getElementById(pageId).style.display = 'block';
-      document.querySelectorAll('.subpage').forEach(s => s.style.display = 'none');
-    }
-    function showSub(subId) {
-      document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
-      document.querySelectorAll('.subpage').forEach(s => s.style.display = 'none');
-      document.getElementById(subId).style.display = 'block';
-      window.scrollTo(0, document.body.scrollHeight - 500); 
-    }
-    const uploader = document.getElementById("imageUploader"),
-          fileStatus = document.getElementById("fileStatus"),
-          canvas = document.getElementById("canvas"),
-          ctx = canvas.getContext("2d"),
-          palette = document.getElementById("palette"),
-          colorsTitle = document.getElementById("colorsTitle");
-    uploader.addEventListener("change", e => {
-      const file = e.target.files[0];
-      fileStatus.textContent = file ? `Selected file: ${file.name}` : "No files have been selected yet";
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = ev => {
-        const img = new Image();
-        img.src = ev.target.result;
-        img.onload = () => {
-          const scale = Math.min(300 / img.width, 300 / img.height, 1),
-                width = Math.floor(img.width * scale),
-                height = Math.floor(img.height * scale);
-          canvas.width = width; canvas.height = height;
-          ctx.drawImage(img, 0, 0, width, height);
-          extractColors(width, height);
-        };
-      };
-      reader.readAsDataURL(file);
-    });
-    function extractColors(w, h) {
-      const data = ctx.getImageData(0, 0, w, h).data, map = new Map(), step = 10;
-      for (let i=0;i<data.length;i+=4*step) {
-        const key = `${data[i]},${data[i+1]},${data[i+2]}`;
-        map.set(key,(map.get(key)||0)+1);
-      }
-      const sorted = Array.from(map.entries()).sort((a,b)=>b[1]-a[1]).slice(0,6)
-        .map(([rgb]) => { const [r,g,b] = rgb.split(',').map(Number);
-          return {rgb:`rgb(${r},${g},${b})`,hex:rgbToHex(r,g,b)};});
-      displayPalette(sorted);
-    }
-    function rgbToHex(r,g,b){return"#"+[r,g,b].map(x=>x.toString(16).padStart(2,"0")).join("").toUpperCase();}
-    function displayPalette(colors){
-      palette.innerHTML=""; colorsTitle.style.display="block";
-      colors.forEach(c=>{
-        const box=document.createElement("div"); box.className="color-box"; box.style.backgroundColor=c.rgb;
-        const code=document.createElement("div"); code.className="color-code"; code.textContent=c.hex;
-        box.append(code); palette.appendChild(box);
-        box.addEventListener("click",()=>{navigator.clipboard.writeText(c.hex)});
-      });
-    }
-    const form=document.getElementById("contactForm"), formMsg=document.getElementById("formMsg");
-    form?.addEventListener("submit",e=>{e.preventDefault(); form.reset(); formMsg.style.display="block"; setTimeout(()=>formMsg.style.display="none",4000);});
-  </script>
-</body>
-</html>
+    <!-- FAQ -->
+    <section id="faq" class="page" style="display:none;">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <p><strong>Q1:</strong> What image formats are supported?<br> <strong>A:</strong> PNG, JPG, JPEG, and GIF are supported.</p>
+      <p><strong>Q2:</strong> Can I use this tool for commercial POD products?<br> <strong>A:</strong> Yes, AiColorExtractor is free for both personal and commercial use.</p>
+      <p><strong>Q3:</strong> Are the color codes accurate?<br> <strong>A:</strong> We provide precise HEX and RGB values based on image analysis.</p>
+      <p><strong>Q4:</strong> Is registration
