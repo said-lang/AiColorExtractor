@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="8hR6RZf_ZT4UrLHwiN4_kn3KZh06wkKg5Bd_VshePpg" />
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>🎨 AiColorExtractor | Free Online Color Palette Generator for Print on Demand Designs</title>
-  <meta name="description" content="AiColorExtractor is a free online color palette generator that helps print-on-demand creators, designers, and marketers extract colors, find hex codes, and improve branding for t-shirts, mugs, and product designs. Fast, simple, and accurate color picker tool for your POD business.">
-  <meta name="keywords" content="AiColorExtractor, color palette generator, print on demand design, POD design tool, free color picker, branding colors, hex code extractor, design marketing, t-shirt design colors, online color tool, palette finder, POD seller tools">
+  <title>AiColorExtractor | Free Online Color Palette & HEX/RGB Extractor Tool</title>
+  <meta name="description" content="AiColorExtractor is a free online color extraction tool for designers, marketers, and POD sellers. Instantly extract HEX and RGB color codes from any image, create professional palettes, and improve branding for your designs." />
+  <meta name="keywords" content="AiColorExtractor, color extractor, HEX color codes, RGB color codes, color palette generator, print on demand design, free color tool, branding colors, design tool online, color picker, palette finder">
   <style>
     :root {
       --primary: #3b82f6;
@@ -74,11 +74,6 @@
       opacity: 0; transition: opacity 0.3s;
     }
     .copied-msg.visible { opacity: 1; }
-    #contactForm input, #contactForm textarea {
-      width: 100%; padding: 0.9rem; margin-bottom: 1rem; border: 2px solid var(--primary);
-      border-radius: 8px; font-size: 1rem; background: #f0f9ff;
-    }
-    #contactForm textarea { height: 180px; resize: vertical; }
     footer {
       background: linear-gradient(90deg, var(--primary), var(--accent));
       color: white; text-align: center; padding: 1rem; font-size: 0.9rem;
@@ -96,18 +91,19 @@
       color: white; display: flex; align-items: center; justify-content: center;
       font-size: 14px; font-weight: bold;
     }
-    .info-section { margin-top: 2rem; font-size: 1rem; line-height: 1.6; }
-    .info-section h2 { text-align: center; margin-bottom: 1rem; color: var(--secondary); }
   </style>
 </head>
 <body>
   <header>
     <h1 onclick="showPage('home')">🎨 AiColorExtractor</h1>
     <nav>
+      <a href="#home" onclick="showPage('home')">Home</a>
+      <a href="#faq" onclick="showPage('faq')">FAQ</a>
+      <a href="#blog" onclick="showPage('blog')">Blog</a>
+      <a href="#about" onclick="showPage('about')">About</a>
       <a href="#privacy" onclick="showPage('privacy')">Privacy Policy</a>
       <a href="#terms" onclick="showPage('terms')">Terms of Use</a>
-      <a href="#about" onclick="showPage('about')">About</a>
-      <a href="#contact" onclick="showPage('contact')">Contact Us</a>
+      <a href="#contact" onclick="showPage('contact')">Contact</a>
     </nav>
   </header>
 
@@ -119,65 +115,80 @@
     <!-- Home -->
     <section id="home" class="page">
       <div class="intro">
-        <p>Extract colors from any image in seconds. 🎨 AiColorExtractor helps designers, print-on-demand sellers, and marketers generate accurate color palettes, hex codes, and branding colors for professional product designs and listings.</p>
+        <p>Welcome to <strong>AiColorExtractor</strong> – the free online tool that lets you extract color palettes, HEX, and RGB codes from any image in seconds. Perfect for designers, POD sellers, and marketers who want accurate and professional colors for their projects.</p>
       </div>
       <div class="upload-box">
-        <label for="imageUploader" class="upload-label">+ Add Images</label>
+        <label for="imageUploader" class="upload-label">+ Upload an Image</label>
         <input type="file" id="imageUploader" accept="image/*" />
         <p id="fileStatus">No files have been selected yet</p>
       </div>
       <canvas id="canvas" style="display:none;"></canvas>
-      <h2 id="colorsTitle">Colors Used in This Design</h2>
+      <h2 id="colorsTitle">Colors Extracted from Your Image</h2>
       <div id="palette"></div>
 
-      <!-- Info Section: 6 paragraphs describing the tool -->
-      <div class="info-section">
-        <h2>Discover the Power of AiColorExtractor</h2>
-        <p>1. <strong>Instant Color Extraction:</strong> Upload any image and get its color palette in seconds. AiColorExtractor identifies the most dominant colors and their hex codes, helping you create professional POD designs quickly.</p>
-        <p>2. <strong>Optimize Your Print-on-Demand Designs:</strong> Whether designing t-shirts, mugs, or other products, AiColorExtractor ensures your designs have visually appealing and cohesive colors that enhance branding.</p>
-        <p>3. <strong>Easy to Use for All Skill Levels:</strong> AiColorExtractor is intuitive and requires no technical knowledge. Just upload your image and instantly receive a ready-to-use color palette.</p>
-        <p>4. <strong>Improve Marketing & Branding:</strong> Knowing the exact colors and hex codes allows you to maintain consistent branding across products and marketing materials, increasing recognition and professionalism.</p>
-        <p>5. <strong>Free Online Tool:</strong> No downloads or installations required. AiColorExtractor works directly in your browser, making it accessible for anyone looking to improve their POD workflow and design efficiency.</p>
-        <p>6. <strong>Boost Your Creativity:</strong> Experiment with colors extracted from your favorite images and create unique, trendy designs that stand out in the competitive print-on-demand market.</p>
+      <!-- SEO Content -->
+      <section>
+        <h2>How AiColorExtractor Works</h2>
+        <p>Our color extractor tool scans every pixel in your uploaded image to identify the most dominant and relevant colors. These colors are then converted into HEX and RGB codes for easy use in your designs and branding projects.</p>
 
-        <!-- CTA Paragraph -->
-        <p style="text-align:center; font-weight:bold; color:var(--primary); font-size:1.2rem; margin-top:1.5rem;">
-          🚀 Try AiColorExtractor now for free and take your POD designs to the next level!
-        </p>
-      </div>
+        <h2>Benefits of Using AiColorExtractor</h2>
+        <p>Designers and print-on-demand sellers save time and effort by generating professional palettes instantly. Whether you’re creating t-shirts, mugs, logos, or websites, AiColorExtractor ensures color accuracy and consistency.</p>
+
+        <h3>Supported Formats</h3>
+        <p>The tool supports <strong>HEX</strong> and <strong>RGB</strong> formats, making it compatible with most design tools, e-commerce platforms, and marketing systems.</p>
+      </section>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="page" style="display:none;">
+      <h2>How to Use AiColorExtractor</h2>
+      <p>1. Upload your image by clicking the “Upload an Image” button.</p>
+      <p>2. Wait for the tool to process your file locally (your data is never uploaded to our servers).</p>
+      <p>3. Instantly view the most used HEX and RGB color codes from your image.</p>
+      <p>4. Click any color to copy its code to your clipboard for easy use.</p>
+    </section>
+
+    <!-- Blog -->
+    <section id="blog" class="page" style="display:none;">
+      <h2>Blog</h2>
+      <article>
+        <h3>What’s the Difference Between HEX and RGB Codes?</h3>
+        <p>HEX codes are six-digit representations of colors used in web and graphic design, while RGB codes define colors based on their Red, Green, and Blue values. Both formats are supported by AiColorExtractor.</p>
+      </article>
+      <article>
+        <h3>Top 10 Color Palettes Inspired by Nature</h3>
+        <p>Nature offers an endless variety of color inspirations. From lush greens to deep ocean blues, explore color palettes that can elevate your designs.</p>
+      </article>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="page" style="display:none;">
+      <h2>About AiColorExtractor</h2>
+      <p>AiColorExtractor was created to help designers, marketers, and e-commerce sellers save time and achieve accurate branding colors. By focusing on simplicity and speed, this free tool empowers anyone to extract professional color palettes in seconds.</p>
     </section>
 
     <!-- Privacy -->
     <section id="privacy" class="page" style="display:none;">
       <h2>Privacy Policy</h2>
-      <p>We value your privacy. No images are stored or uploaded. All color extraction is processed locally on your device. We do not collect any personal information unless you voluntarily provide it through our contact form. Your data is kept secure and confidential. For more information, see <a href="https://policies.google.com/privacy" target="_blank">Google Privacy & Terms</a>.</p>
+      <p>Your privacy is important to us. AiColorExtractor processes images directly in your browser. No files are uploaded or stored on our servers. For more details, please also review <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</p>
     </section>
 
     <!-- Terms -->
     <section id="terms" class="page" style="display:none;">
       <h2>Terms of Use</h2>
-      <p>AiColorExtractor is a free online tool designed for personal and professional projects. Users are responsible for the content they upload. We do not guarantee color accuracy for all devices or displays. By using this tool, you agree not to misuse it for illegal purposes and acknowledge that the developers are not liable for any loss, damage, or commercial disputes. Ensure compliance with your own business rules and local laws when using extracted colors for POD products.</p>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="page" style="display:none;">
-      <h2>About</h2>
-      <p>AiColorExtractor was created to help Print-on-Demand businesses, designers, and e-commerce sellers quickly generate professional color palettes for better branding and marketing. Our goal is to simplify color selection, improve design workflow, and save time for creators. The tool is browser-based, free to use, and designed to support POD entrepreneurs in creating high-quality, visually consistent products that attract customers.</p>
+      <p>AiColorExtractor is free to use for personal and professional projects. We do not guarantee absolute accuracy across all devices or monitors. By using this site, you agree that we are not responsible for any issues resulting from color extraction or interpretation.</p>
     </section>
 
     <!-- Contact -->
     <section id="contact" class="page" style="display:none;">
       <h2>Contact Us</h2>
-      <p>Have questions or feedback? Fill out the form below:</p>
       <form id="contactForm">
         <input type="text" id="name" placeholder="Your Name" required />
         <input type="email" id="email" placeholder="Your Email" required />
         <textarea id="message" placeholder="Write your message here..." required></textarea>
         <button type="submit" class="upload-label">Send Message</button>
       </form>
-      <p id="formMsg" style="margin-top:1rem; font-weight:bold; color:green; display:none;">
-        ✅ Thank you! Your message has been sent.
-      </p>
+      <p id="formMsg" style="margin-top:1rem; font-weight:bold; color:green; display:none;">✅ Thank you! Your message has been sent.</p>
     </section>
   </main>
 
@@ -239,10 +250,7 @@
       });
     }
     const form=document.getElementById("contactForm"), formMsg=document.getElementById("formMsg");
-    form?.addEventListener("submit",e=>{
-      e.preventDefault(); form.reset(); formMsg.style.display="block";
-      setTimeout(()=>formMsg.style.display="none",4000);
-    });
+    form?.addEventListener("submit",e=>{e.preventDefault(); form.reset(); formMsg.style.display="block"; setTimeout(()=>formMsg.style.display="none",4000);});
   </script>
 </body>
 </html>
