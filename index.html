@@ -15,13 +15,39 @@
       --bg: #ffffff;
       --text: #1f2937;
     }
-    body {margin:0; font-family:'Segoe UI', sans-serif; background:var(--bg); color:var(--text); display:flex; flex-direction:column; min-height:100vh;}
-    header {background:linear-gradient(90deg, var(--primary), var(--secondary)); color:white; padding:1rem 2rem; display:flex; align-items:center; box-shadow:0 4px 10px rgba(0,0,0,0.15);}
+    body {
+      margin:0; 
+      font-family:'Segoe UI', sans-serif; 
+      background:#f5f5f5; 
+      color:var(--text); 
+      display:flex; 
+      flex-direction:column; 
+      min-height:100vh;
+    }
+    header {
+      background:linear-gradient(90deg, var(--primary), var(--secondary)); 
+      color:white; 
+      padding:1rem 2rem; 
+      display:flex; 
+      align-items:center; 
+      box-shadow:0 4px 10px rgba(0,0,0,0.15);
+      position:sticky;
+      top:0;
+      z-index:10;
+    }
     header h1 {margin:0; font-size:1.6rem; cursor:pointer;}
     nav {margin-left:auto;}
     nav a {color:white; margin-left:1.5rem; text-decoration:none; font-weight:600; font-size:1rem;}
     nav a:hover {text-decoration:underline;}
-    .container {max-width:1000px; margin:2rem auto; padding:2rem; background:#fff; border-radius:12px; box-shadow:0 8px 24px rgba(0,0,0,0.1); flex:1;}
+    main.container {
+      max-width:1000px; 
+      margin:2rem auto; 
+      padding:2rem; 
+      background:#fff; 
+      border-radius:12px; 
+      box-shadow:0 8px 24px rgba(0,0,0,0.1); 
+      flex:1;
+    }
     .intro {text-align:center; margin-bottom:1.5rem; font-size:1.1rem; line-height:1.6;}
     .upload-box {margin:2rem auto; width:80%; padding:2.5rem 1rem; border:2px dashed var(--primary); border-radius:10px; background:#eff6ff; text-align:center;}
     .upload-label {display:inline-block; background:var(--primary); color:#fff; padding:0.7rem 1.4rem; border-radius:8px; cursor:pointer; font-size:1rem; font-weight:600; transition:background 0.3s ease;}
@@ -37,28 +63,33 @@
     .copied-msg.visible {opacity:1;}
     #contactForm input, #contactForm textarea {width:100%; padding:0.9rem; margin-bottom:1rem; border:2px solid var(--primary); border-radius:8px; font-size:1rem; background:#f0f9ff;}
     #contactForm textarea {height:220px; resize:vertical;}
-    footer {background:linear-gradient(90deg, var(--primary), var(--accent)); color:white; text-align:center; padding:1rem; font-size:0.9rem; display:flex; flex-direction:column; align-items:center;}
+    h2.section-title {color:black; margin-top:2rem; text-align:left;}
+    .cta-paragraph {margin-top:1rem; font-weight:bold; font-size:1.1rem; text-align:center; color:var(--secondary);}
+    footer {
+      background:linear-gradient(90deg, var(--primary), var(--accent)); 
+      color:white; 
+      text-align:center; 
+      padding:1rem; 
+      font-size:0.9rem; 
+      margin-top:auto;
+    }
     .footer-links {margin-top:0.5rem; display:flex; gap:1rem; font-size:0.8rem; flex-wrap:wrap; justify-content:center;}
     .footer-links a {color:white; text-decoration:none;}
     .footer-links a:hover {text-decoration:underline;}
-    .ad-left, .ad-right {position:absolute; top:120px; width:120px; height:600px; background:#fde68a; color:#b45309; display:flex; align-items:center; justify-content:center; font-size:14px; border:2px solid #fcd34d; border-radius:6px; font-weight:bold;}
-    .ad-left {left:10px;} .ad-right {right:10px;}
-    .ad-bottom {width:100%; height:80px; background:linear-gradient(90deg,var(--primary), var(--secondary)); color:white; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:bold;}
-    h2.section-title {color:black; margin-top:2rem; text-align:left;}
-    .cta-paragraph {margin-top:1rem; font-weight:bold; font-size:1.1rem; text-align:center; color:var(--secondary);}
+    .footer-subscribe {margin-top:0.5rem;}
+    .footer-subscribe input[type=email] {padding:0.5rem; border-radius:5px; border:1px solid #ccc;}
+    .footer-subscribe button {padding:0.5rem 1rem; border:none; border-radius:5px; background:var(--primary); color:white; cursor:pointer;}
   </style>
 </head>
 <body>
   <header>
     <h1 onclick="showPage('home')">🎨 AiColorExtractor</h1>
     <nav>
+      <a href="#home" onclick="showPage('home')">Home</a>
       <a href="#how" onclick="showPage('how')">How It Works</a>
+      <a href="#contact" onclick="showPage('contact')">Contact</a>
     </nav>
   </header>
-
-  <!-- Ads -->
-  <div class="ad-left">Ad Space</div>
-  <div class="ad-right">Ad Space</div>
 
   <main class="container">
     <!-- Home -->
@@ -92,45 +123,10 @@
       <p>Upload your image using the "+ Add Images" button. The tool instantly analyzes the image pixels to detect dominant colors.</p>
       <p>The extracted colors are displayed in HEX and RGB formats, allowing precise replication in your designs.</p>
       <p>Click any color to copy it directly to your clipboard for quick integration into design software.</p>
-      <p>Supports batch processing and efficiently handles large images.</p>
-      <p>Ideal for designers, marketers, and POD sellers to save time while improving color consistency.</p>
-      <p>No registration required – a fully free online platform accessible from any modern browser.</p>
-      <p>Perfect for creating consistent branding and marketing visuals across products.</p>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="page" style="display:none;">
-      <h2 class="section-title">About AiColorExtractor</h2>
-      <p>AiColorExtractor was created to empower designers and POD sellers with a fast and reliable color extraction tool.</p>
-      <p>Our mission is to improve design efficiency and enable creators to generate accurate color palettes effortlessly.</p>
-      <p>Supports HEX and RGB color codes for all types of print-on-demand products, enhancing product branding and appeal.</p>
-      <p>All image processing occurs locally to protect user privacy and data security.</p>
-      <p>Continuous updates are implemented based on user feedback to maximize tool performance and usability.</p>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" class="page" style="display:none;">
-      <h2 class="section-title">Frequently Asked Questions</h2>
-      <p><strong>Q1:</strong> How do I extract colors?<br> <strong>A:</strong> Upload any image, and AiColorExtractor will instantly generate the color palette in HEX and RGB.</p>
-      <p><strong>Q2:</strong> Is this tool free?<br> <strong>A:</strong> Yes, AiColorExtractor is completely free to use.</p>
-      <p><strong>Q3:</strong> Can I use it for commercial designs?<br> <strong>A:</strong> Yes, it’s suitable for both personal and commercial projects.</p>
-      <p><strong>Q4:</strong> Is registration required?<br> <strong>A:</strong> No registration is needed to use the tool.</p>
-      <p><strong>Q5:</strong> Are images stored?<br> <strong>A:</strong> No. All images are processed locally and never uploaded.</p>
-    </section>
-
-    <!-- Blog -->
-    <section id="blog" class="page" style="display:none;">
-      <h2 class="section-title">AiColorExtractor Blog</h2>
-      <p>Learn all about color extraction, HEX and RGB codes, and how to enhance your POD designs with AiColorExtractor.</p>
-      <p>Discover the best color combinations for t-shirts, mugs, and other POD products.</p>
-      <p>Step-by-step guides for using color palettes effectively in branding.</p>
-      <p>Free tutorials for print-on-demand designers to save time and improve productivity.</p>
-      <p>Tips on color psychology and its effect on product marketing.</p>
-      <p>Insights for creating visually appealing product listings.</p>
-      <p>Updates on new features and improvements in AiColorExtractor.</p>
-      <p>Examples of real-world applications for designers and marketers.</p>
-      <p>Comparisons between HEX and RGB formats for different use cases.</p>
-      <p>Advice on integrating extracted colors into your workflow efficiently.</p>
+      <p>Supports batch processing and efficiently handles multiple designs without losing accuracy.</p>
+      <p>Perfect for POD sellers, designers, marketers, and anyone working with color-sensitive products.</p>
+      <p>Our tool ensures accurate branding colors for product listings, websites, and marketing materials.</p>
+      <p>No registration or installation required, all processing is done instantly in your browser.</p>
     </section>
 
     <!-- Contact -->
@@ -145,38 +141,14 @@
       </form>
       <p id="formMsg" style="margin-top:1rem; font-weight:bold; color:green; display:none;">✅ Thank you! Your message has been sent.</p>
     </section>
-
-    <!-- Privacy Policy -->
-    <section id="privacy" class="page" style="display:none;">
-      <h2 class="section-title">Privacy Policy</h2>
-      <p>AiColorExtractor respects your privacy. All images are processed locally and are never uploaded. Personal information provided in the contact form is only used to respond to inquiries. <a href="https://policies.google.com/privacy" target="_blank">Google Privacy & Terms</a>.</p>
-      <p>We do not share or sell user data. Our platform is secure and transparent, ensuring safety for all users.</p>
-    </section>
-
-    <!-- Terms of Use -->
-    <section id="terms" class="page" style="display:none;">
-      <h2 class="section-title">Terms of Use</h2>
-      <p>AiColorExtractor is free to use for personal and commercial projects. The tool is provided "as-is" without warranty. Accuracy may vary across devices.</p>
-      <p>Users agree not to misuse the tool or redistribute content inappropriately. We may update these terms at any time.</p>
-    </section>
-
   </main>
-
-  <div class="ad-bottom">Ad Space</div>
 
   <footer>
     <div>&copy; 2025 AiColorExtractor. All rights reserved.</div>
     <div class="footer-links">
-      <a href="#about" onclick="showPage('about')">About</a>
-      <a href="#faq" onclick="showPage('faq')">FAQ</a>
-      <a href="#privacy" onclick="showPage('privacy')">Privacy Policy</a>
-      <a href="#terms" onclick="showPage('terms')">Terms of Use</a>
-      <a href="#blog" onclick="showPage('blog')">Blog</a>
+      <a href="#home" onclick="showPage('home')">Home</a>
+      <a href="#how" onclick="showPage('how')">How It Works</a>
       <a href="#contact" onclick="showPage('contact')">Contact</a>
-    </div>
-    <div style="margin-top:0.5rem;">
-      <input type="email" placeholder="Subscribe to our newsletter" style="padding:0.5rem; border-radius:5px; border:1px solid #ccc;">
-      <button style="padding:0.5rem 1rem; border:none; border-radius:5px; background:var(--primary); color:white; cursor:pointer;">Subscribe</button>
     </div>
   </footer>
 
