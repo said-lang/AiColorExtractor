@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="google-site-verification" content="8hR6RZf_ZT4UrLHwiN4_kn3KZh06wkKg5Bd_VshePpg" />
   <title>AiColorExtractor | Free Online Color Palette & HEX/RGB Extractor Tool</title>
-  <meta name="description" content="AiColorExtractor is a free online color extractor tool that lets you generate professional HEX and RGB palettes from any image. Perfect for designers, marketers, and POD sellers who want accurate colors for branding, product designs, and creative projects." />
-  <meta name="keywords" content="AiColorExtractor, color extractor, HEX colors, RGB codes, color palette generator, print on demand design, branding colors, design tool, online color picker, palette finder, t-shirt design colors">
+  <meta name="description" content="AiColorExtractor is a free online color extractor tool that generates professional HEX and RGB palettes from any image. Perfect for designers, marketers, and POD sellers." />
+  <meta name="keywords" content="AiColorExtractor, color extractor, HEX colors, RGB codes, color palette generator, online color picker, branding colors, design tool">
   <style>
     :root {
       --primary: #3b82f6;
@@ -76,7 +75,7 @@
     h2, h3 { color: #000; margin-top: 1.4rem; }
     footer {
       background: linear-gradient(90deg, var(--primary), var(--accent));
-      color: white; text-align: center; padding: 1.5rem; font-size: 0.85rem;
+      color: white; text-align: center; padding: 1.5rem; font-size: 0.85rem; margin-top: auto;
     }
     footer nav a { color: #fff; margin: 0 0.7rem; font-size: 0.85rem; text-decoration: none; }
     footer nav a:hover { text-decoration: underline; }
@@ -88,12 +87,35 @@
       padding: 0.6rem 1rem; border: none; border-radius: 5px;
       background: var(--secondary); color: #fff; font-weight: bold; cursor: pointer;
     }
-    .form-group { margin-bottom: 1rem; text-align: left; }
-    .form-group label { display: block; margin-bottom: 0.3rem; font-weight: bold; }
-    .form-group input, .form-group textarea {
-      width: 100%; padding: 0.6rem; border-radius: 6px; border: 1px solid #ccc; font-size: 1rem;
+    /* Contact Page */
+    #contactForm {
+      background: #f9fafb;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 700px;
+      margin: auto;
     }
-    .form-group textarea { min-height: 120px; }
+    .form-group { margin-bottom: 1.5rem; text-align: left; }
+    .form-group label { display: block; margin-bottom: 0.5rem; font-weight: bold; color: #000; }
+    .form-group input, .form-group textarea {
+      width: 100%; padding: 1rem; border-radius: 8px;
+      border: 1px solid #ccc; font-size: 1rem; background: #fff;
+    }
+    .form-group textarea { min-height: 180px; }
+    #contactForm button {
+      background: var(--primary);
+      color: #fff;
+      padding: 0.9rem 1.8rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    #contactForm button:hover { background: var(--secondary); }
+    .subpage { display: none; margin: 2rem auto; padding: 2rem; max-width: 900px; background: #fff; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+    .subpage h2 { margin-bottom: 1rem; }
   </style>
 </head>
 <body>
@@ -124,34 +146,6 @@
       <div id="palette"></div>
     </section>
 
-    <!-- FAQ / How it Works -->
-    <section id="faq" class="page" style="display:none;">
-      <h2>How AiColorExtractor Works</h2>
-      <p>AiColorExtractor works in your browser to ensure speed and privacy. Once you upload an image, our algorithm scans the pixels and identifies the dominant colors with precision. The results are displayed instantly as HEX and RGB codes.</p>
-      <p>Step 1: Click “Upload an Image” and select any photo from your computer.</p>
-      <p>Step 2: The tool automatically extracts the main colors and generates a palette.</p>
-      <p>Step 3: Each color is shown with HEX and RGB formats for easy use in design tools.</p>
-      <p>Step 4: Click on any color to copy its HEX code to your clipboard instantly.</p>
-      <p>This simple workflow makes AiColorExtractor perfect for designers, marketers, POD sellers, and developers who want accurate colors without extra steps.</p>
-      <p>Unlike other tools, AiColorExtractor does not upload your images to servers. Everything happens locally, ensuring privacy and faster results.</p>
-      <p>Supported formats include <strong>HEX</strong> for web design and <strong>RGB</strong> for design platforms like Photoshop, Illustrator, and Canva.</p>
-    </section>
-
-    <!-- Blog -->
-    <section id="blog" class="page" style="display:none;">
-      <h2>Blog</h2>
-      <p>1. AiColorExtractor helps designers find exact HEX and RGB codes from images, giving them full control over branding and creative projects.</p>
-      <p>2. This tool is ideal for print-on-demand sellers who need accurate colors for t-shirt designs, mugs, and digital artwork.</p>
-      <p>3. SEO-optimized color palettes improve your online shop appearance, making products more attractive and professional.</p>
-      <p>4. AiColorExtractor supports HEX and RGB formats, making it compatible with Photoshop, Illustrator, and Canva.</p>
-      <p>5. Marketers use AiColorExtractor to keep branding consistent across ads, banners, and social media posts.</p>
-      <p>6. The tool is completely free and requires no account registration, making it accessible to everyone.</p>
-      <p>7. Extracting colors is instant and accurate, which saves time for designers and marketers working under deadlines.</p>
-      <p>8. AiColorExtractor boosts creativity by allowing users to generate unique palettes inspired by real-life photos.</p>
-      <p>9. Designers can use extracted palettes to improve UI/UX consistency in apps and websites.</p>
-      <p>10. AiColorExtractor combines simplicity, accuracy, and security, making it one of the best online color tools available today.</p>
-    </section>
-
     <!-- Contact -->
     <section id="contact" class="page" style="display:none;">
       <h2>Contact Us</h2>
@@ -172,19 +166,26 @@
           <label for="message">Message</label>
           <textarea id="message" placeholder="Write your message here..." required></textarea>
         </div>
-        <button type="submit" class="upload-label">Send Message</button>
+        <button type="submit">Send Message</button>
       </form>
       <p id="formMsg" style="margin-top:1rem; font-weight:bold; color:green; display:none;">✅ Thank you! Your message has been sent.</p>
     </section>
+
+    <!-- Subpages -->
+    <section id="about" class="subpage"><h2>About AiColorExtractor</h2><p>This tool was built to help designers...</p></section>
+    <section id="privacy" class="subpage"><h2>Privacy Policy</h2><p>We respect your privacy...</p></section>
+    <section id="terms" class="subpage"><h2>Terms of Use</h2><p>By using AiColorExtractor...</p></section>
+    <section id="faq" class="subpage"><h2>FAQ - How it Works</h2><p>Upload an image...</p></section>
+    <section id="blog" class="subpage"><h2>Blog</h2><p>Coming soon...</p></section>
   </main>
 
   <footer>
     <p>&copy; 2025 AiColorExtractor. All rights reserved.</p>
     <nav>
-      <a href="#about" onclick="showPage('about')">About</a>
-      <a href="#privacy" onclick="showPage('privacy')">Privacy Policy</a>
-      <a href="#terms" onclick="showPage('terms')">Terms of Use</a>
-      <a href="#faq" onclick="showPage('faq')">FAQ</a>
+      <a href="#about" onclick="showSub('about')">About</a>
+      <a href="#privacy" onclick="showSub('privacy')">Privacy Policy</a>
+      <a href="#terms" onclick="showSub('terms')">Terms of Use</a>
+      <a href="#faq" onclick="showSub('faq')">FAQ</a>
     </nav>
     <div class="newsletter">
       <p>📩 Subscribe to our newsletter for updates:</p>
@@ -193,29 +194,17 @@
     </div>
   </footer>
 
-  <!-- Hidden pages expanded -->
-  <section id="about" class="page" style="display:none; padding:2rem;">
-    <h2>About AiColorExtractor</h2>
-    <p>AiColorExtractor was built to empower designers, print-on-demand sellers, and digital marketers with a fast and accurate color extraction tool. Our mission is to simplify your creative process by providing instant access to HEX and RGB codes from any image.</p>
-    <p>By offering this free tool, we aim to help small businesses, e-commerce sellers, and independent creators improve their branding and productivity.</p>
-  </section>
-
-  <section id="privacy" class="page" style="display:none; padding:2rem;">
-    <h2>Privacy Policy</h2>
-    <p>We value your privacy. AiColorExtractor processes images locally in your browser; no data is ever uploaded to our servers. This ensures that your files remain safe, secure, and private.</p>
-    <p>For more details, you may also review <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>.</p>
-  </section>
-
-  <section id="terms" class="page" style="display:none; padding:2rem;">
-    <h2>Terms of Use</h2>
-    <p>AiColorExtractor is provided as a free online service for both personal and professional projects. By using this tool, you agree not to misuse it or attempt to exploit it beyond its intended functionality.</p>
-    <p>We do not guarantee 100% accuracy across all devices or monitors, and we are not liable for design outcomes resulting from extracted colors.</p>
-  </section>
-
   <script>
     function showPage(pageId) {
       document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
       document.getElementById(pageId).style.display = 'block';
+      document.querySelectorAll('.subpage').forEach(s => s.style.display = 'none');
+    }
+    function showSub(subId) {
+      document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
+      document.querySelectorAll('.subpage').forEach(s => s.style.display = 'none');
+      document.getElementById(subId).style.display = 'block';
+      window.scrollTo(0, document.body.scrollHeight - 500); 
     }
     const uploader = document.getElementById("imageUploader"),
           fileStatus = document.getElementById("fileStatus"),
