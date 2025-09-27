@@ -123,9 +123,9 @@
       <p>Upload your image using the "+ Add Images" button. The tool instantly analyzes the image pixels to detect dominant colors.</p>
       <p>The extracted colors are displayed in HEX and RGB formats, allowing precise replication in your designs.</p>
       <p>Click any color to copy it directly to your clipboard for quick integration into design software.</p>
-      <p>Supports batch processing and efficiently handles multiple designs without losing accuracy.</p>
+      <p>Supports batch processing and multiple designs without losing accuracy.</p>
       <p>Perfect for POD sellers, designers, marketers, and anyone working with color-sensitive products.</p>
-      <p>Our tool ensures accurate branding colors for product listings, websites, and marketing materials.</p>
+      <p>Ensures accurate branding colors for product listings, websites, and marketing materials.</p>
       <p>No registration or installation required, all processing is done instantly in your browser.</p>
     </section>
 
@@ -141,45 +141,96 @@
       </form>
       <p id="formMsg" style="margin-top:1rem; font-weight:bold; color:green; display:none;">✅ Thank you! Your message has been sent.</p>
     </section>
+
+    <!-- Blog -->
+    <section id="blog" class="page" style="display:none;">
+      <h2 class="section-title">Blog</h2>
+      <p>Welcome to AiColorExtractor Blog! Learn everything about color extraction, POD designs, HEX and RGB color usage, and tips for marketers and designers.</p>
+      <p>Understand the difference between HEX and RGB codes for accurate color reproduction.</p>
+      <p>Top 10 color palettes inspired by nature to enhance your product designs.</p>
+      <p>Step-by-step tutorials on extracting colors from images efficiently.</p>
+      <p>Advanced techniques for using extracted colors in t-shirts, mugs, and other POD products.</p>
+      <p>Tips to improve your e-commerce product branding with the right color choices.</p>
+      <p>How AiColorExtractor speeds up your design workflow.</p>
+      <p>Best practices for designers and marketers to maximize color impact.</p>
+      <p>Case studies showing color extraction boosting sales and engagement.</p>
+      <p>Guides on integrating AiColorExtractor with your favorite design software.</p>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="page" style="display:none;">
+      <h2 class="section-title">FAQ</h2>
+      <p><strong>Q:</strong> What formats are supported? <strong>A:</strong> AiColorExtractor supports all common image formats including JPG, PNG, and GIF.</p>
+      <p><strong>Q:</strong> Can I copy HEX and RGB codes? <strong>A:</strong> Yes, click any color box to copy codes instantly.</p>
+      <p><strong>Q:</strong> Is registration required? <strong>A:</strong> No, the tool is completely free and works without login.</p>
+      <p><strong>Q:</strong> Does it work offline? <strong>A:</strong> No, it requires an internet connection to operate in the browser.</p>
+    </section>
+
+    <!-- Privacy -->
+    <section id="privacy" class="page" style="display:none;">
+      <h2 class="section-title">Privacy Policy</h2>
+      <p>AiColorExtractor values your privacy. We do not store or upload any images you use. All color extraction is processed locally in your browser to ensure your data remains private and secure.</p>
+      <p>We do not collect personal information unless you submit it via the Contact form. Any email or name submitted is used solely to respond to your inquiry and will never be shared.</p>
+      <p>We may use cookies or local storage to enhance user experience and maintain session state, but no personal data is tracked or sold.</p>
+      <p>All interactions with AiColorExtractor are encrypted and secure. You can safely use our service without worrying about your images being stored online.</p>
+      <p>For more information on Google's Privacy & Terms, visit <a href="https://policies.google.com/" target="_blank" style="color:var(--primary)">Google Privacy & Terms</a>.</p>
+    </section>
+
+    <!-- Terms of Use -->
+    <section id="terms" class="page" style="display:none;">
+      <h2 class="section-title">Terms of Use</h2>
+      <p>AiColorExtractor is provided free of charge for personal and professional use. By using this tool, you agree to these terms and understand the scope of its functionality.</p>
+      <p>The tool aims to provide accurate color extraction in HEX and RGB formats, but we do not guarantee exact color accuracy across all devices and monitors.</p>
+      <p>Users are responsible for the proper use of extracted colors in their designs, branding, and marketing materials.</p>
+      <p>The service is provided as-is, without warranties. AiColorExtractor is not liable for any indirect or direct damages arising from its use.</p>
+      <p>All copyrights of uploaded images remain with the users. The tool does not claim ownership over any user-provided content.</p>
+      <p>We reserve the right to update, modify, or discontinue the service at any time without prior notice.</p>
+    </section>
   </main>
 
   <footer>
     <div>&copy; 2025 AiColorExtractor. All rights reserved.</div>
     <div class="footer-links">
-      <a href="#home" onclick="showPage('home')">Home</a>
-      <a href="#how" onclick="showPage('how')">How It Works</a>
-      <a href="#contact" onclick="showPage('contact')">Contact</a>
+      <a href="#blog" onclick="showPage('blog')">Blog</a>
+      <a href="#faq" onclick="showPage('faq')">FAQ</a>
+      <a href="#privacy" onclick="showPage('privacy')">Privacy Policy</a>
+      <a href="#terms" onclick="showPage('terms')">Terms of Use</a>
+    </div>
+    <div class="footer-subscribe">
+      <form id="subscribeForm" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+        <input type="email" placeholder="Enter your email" required />
+        <button type="submit">Subscribe</button>
+      </form>
     </div>
   </footer>
 
   <script>
-    function showPage(pageId){
-      document.querySelectorAll('.page').forEach(p=>p.style.display='none');
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(p => p.style.display='none');
       document.getElementById(pageId).style.display='block';
-      window.scrollTo(0,0);
+      window.scrollTo(0,0); // scroll to top on page switch
     }
 
-    const uploader=document.getElementById("imageUploader"),
-          fileStatus=document.getElementById("fileStatus"),
-          canvas=document.getElementById("canvas"),
-          ctx=canvas.getContext("2d"),
-          palette=document.getElementById("palette"),
-          colorsTitle=document.getElementById("colorsTitle");
+    const uploader = document.getElementById("imageUploader"),
+          fileStatus = document.getElementById("fileStatus"),
+          canvas = document.getElementById("canvas"),
+          ctx = canvas.getContext("2d"),
+          palette = document.getElementById("palette"),
+          colorsTitle = document.getElementById("colorsTitle");
 
-    uploader.addEventListener("change", e=>{
-      const file=e.target.files[0];
-      fileStatus.textContent=file?`Selected file: ${file.name}`:"No files have been selected yet";
-      if(!file) return;
-      const reader=new FileReader();
-      reader.onload=ev=>{
-        const img=new Image();
-        img.src=ev.target.result;
-        img.onload=()=>{
-          const scale=Math.min(300/img.width,300/img.height,1),
-                width=Math.floor(img.width*scale),
-                height=Math.floor(img.height*scale);
-          canvas.width=width;
-          canvas.height=height;
+    uploader.addEventListener("change", e => {
+      const file = e.target.files[0];
+      fileStatus.textContent = file ? `Selected file: ${file.name}` : "No files have been selected yet";
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = ev => {
+        const img = new Image();
+        img.src = ev.target.result;
+        img.onload = () => {
+          const scale = Math.min(300/img.width, 300/img.height, 1),
+                width = Math.floor(img.width*scale),
+                height = Math.floor(img.height*scale);
+          canvas.width = width; canvas.height = height;
           ctx.drawImage(img,0,0,width,height);
           extractColors(width,height);
         };
@@ -187,34 +238,44 @@
       reader.readAsDataURL(file);
     });
 
-    function extractColors(w,h){
-      const data=ctx.getImageData(0,0,w,h).data,map=new Map(),step=10;
-      for(let i=0;i<data.length;i+=4*step){
+    function extractColors(w,h) {
+      const data = ctx.getImageData(0,0,w,h).data,
+            map = new Map(), step = 10;
+      for (let i=0;i<data.length;i+=4*step){
         const key=`${data[i]},${data[i+1]},${data[i+2]}`;
         map.set(key,(map.get(key)||0)+1);
       }
-      const sorted=Array.from(map.entries()).sort((a,b)=>b[1]-a[1]).slice(0,6)
-      .map(([rgb])=>{const [r,g,b]=rgb.split(',').map(Number); return {rgb:`rgb(${r},${g},${b})`,hex:rgbToHex(r,g,b)};});
+      const sorted = Array.from(map.entries()).sort((a,b)=>b[1]-a[1]).slice(0,6)
+                     .map(([rgb])=>{const [r,g,b]=rgb.split(',').map(Number); return {rgb:`rgb(${r},${g},${b})`,hex:rgbToHex(r,g,b)};});
       displayPalette(sorted);
     }
 
-    function rgbToHex(r,g,b){return "#"+[r,g,b].map(x=>x.toString(16).padStart(2,"0")).join("").toUpperCase();}
+    function rgbToHex(r,g,b){return"#"+[r,g,b].map(x=>x.toString(16).padStart(2,"0")).join("").toUpperCase();}
 
     function displayPalette(colors){
-      palette.innerHTML="";
-      colorsTitle.style.display="block";
+      palette.innerHTML=""; colorsTitle.style.display="block";
       colors.forEach(c=>{
-        const box=document.createElement("div"); box.className="color-box"; box.style.backgroundColor=c.rgb;
-        const code=document.createElement("div"); code.className="color-code"; code.textContent=c.hex;
-        const msg=document.createElement("div"); msg.className="copied-msg"; msg.textContent="Copied!";
-        box.append(msg,code); palette.appendChild(box);
+        const box=document.createElement("div"); 
+        box.className="color-box"; 
+        box.style.backgroundColor=c.rgb;
+        const code=document.createElement("div"); 
+        code.className="color-code"; 
+        code.textContent=c.hex;
+        const msg=document.createElement("div"); 
+        msg.className="copied-msg"; 
+        msg.textContent="Copied!";
+        box.append(msg,code); 
+        palette.appendChild(box);
         box.addEventListener("click",()=>{navigator.clipboard.writeText(c.hex).then(()=>{msg.classList.add("visible"); setTimeout(()=>msg.classList.remove("visible"),1500);});});
       });
     }
 
-    const form=document.getElementById("contactForm"),formMsg=document.getElementById("formMsg");
-    form?.addEventListener("submit", e=>{
-      e.preventDefault(); form.reset(); formMsg.style.display="block";
+    const contactForm = document.getElementById("contactForm"),
+          formMsg = document.getElementById("formMsg");
+    contactForm?.addEventListener("submit",e=>{
+      e.preventDefault(); 
+      contactForm.reset(); 
+      formMsg.style.display="block"; 
       setTimeout(()=>formMsg.style.display="none",4000);
     });
   </script>
