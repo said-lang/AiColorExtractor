@@ -77,10 +77,7 @@
     .section-title { font-size: 1.4rem; font-weight: 700; color: #000; margin-bottom: 0.8rem; }
     section.page { display: none; }
     section.page.active { display: block; }
-    #contactForm input, #contactForm textarea {
-      width: 100%; padding: 0.9rem; margin-bottom: 1rem; border: 2px solid var(--primary);
-      border-radius: 8px; font-size: 1rem; background: #f0f9ff;
-    }
+    #contactForm input, #contactForm textarea, #subscribeForm input { width: 100%; padding: 0.9rem; margin-bottom: 1rem; border: 2px solid var(--primary); border-radius: 8px; font-size: 1rem; background: #f0f9ff; }
     #contactForm textarea { height: 180px; resize: vertical; }
     footer {
       background: linear-gradient(90deg, var(--primary), var(--accent));
@@ -90,6 +87,7 @@
     .footer-links a { color:white; margin:0 0.5rem; text-decoration:underline; font-size:0.85rem; }
     .faq-item { margin-bottom: 1rem; }
     .faq-item h3 { font-weight:600; color: var(--primary); margin-bottom:0.3rem; }
+    .blog-paragraph { margin-bottom:1rem; line-height:1.6; }
   </style>
 </head>
 <body>
@@ -116,18 +114,6 @@
       <canvas id="canvas" style="display:none;"></canvas>
       <h2 id="colorsTitle">Colors Used in This Design</h2>
       <div id="palette"></div>
-
-      <!-- Informational Paragraphs -->
-      <div class="info-paragraphs">
-        <h2 class="section-title">Why Use AiColorExtractor?</h2>
-        <p>AiColorExtractor helps designers, marketers, and POD sellers extract accurate HEX and RGB colors from any image to create stunning product designs. It's fast, precise, and completely online.</p>
-        <p>The tool supports JPG, PNG, and GIF formats, making it flexible for any design workflow. Perfect for t-shirts, mugs, posters, and more.</p>
-        <p>Instant color extraction ensures you save time and maintain brand consistency across all products.</p>
-        <p>Generated palettes can be copied directly into design software or shared with your team effortlessly.</p>
-        <p>By providing accurate color codes, AiColorExtractor boosts productivity and creative efficiency.</p>
-        <p>Whether you are a professional designer or a hobbyist, this tool makes your workflow seamless and reliable.</p>
-        <p>Optimize your print-on-demand business with AiColorExtractor and elevate your product aesthetics using perfect color combinations.</p>
-      </div>
     </section>
 
     <!-- How It Works -->
@@ -144,7 +130,6 @@
     <!-- Contact Page -->
     <section id="contact" class="page">
       <h2 class="section-title">Contact Us</h2>
-      <p>Have questions or feedback? Fill out the form below:</p>
       <form id="contactForm">
         <input type="text" id="name" placeholder="Your Name" required />
         <input type="email" id="email" placeholder="Your Email" required />
@@ -176,6 +161,37 @@
         <p>A: No, it requires an active internet connection to operate in the browser.</p>
       </div>
     </section>
+
+    <!-- Privacy Policy -->
+    <section id="privacy" class="page">
+      <h2 class="section-title">Privacy Policy</h2>
+      <p>AiColorExtractor values your privacy. All image processing happens locally in your browser; no images are uploaded to our servers. We do not store, share, or sell your data.</p>
+      <p>By using this tool, you consent to local processing of images solely for generating color palettes.</p>
+      <p>For more information on Google's privacy policies, visit <a href="https://policies.google.com/privacy" target="_blank">Google Privacy & Terms</a>.</p>
+    </section>
+
+    <!-- Terms of Use -->
+    <section id="terms" class="page">
+      <h2 class="section-title">Terms of Use</h2>
+      <p>AiColorExtractor is a free tool available for personal and commercial use. We provide it "as is" without warranties regarding accuracy, completeness, or suitability for any purpose.</p>
+      <p>Users are responsible for complying with all applicable laws and respecting intellectual property rights when using the tool.</p>
+      <p>By using AiColorExtractor, you agree to these terms. We reserve the right to modify or discontinue the service at any time.</p>
+    </section>
+
+    <!-- Blog Page -->
+    <section id="blog" class="page">
+      <h2 class="section-title">Blog</h2>
+      <p class="blog-paragraph">AiColorExtractor is designed to simplify the workflow of designers and POD sellers. Learn how to extract colors effectively and enhance your product designs.</p>
+      <p class="blog-paragraph">Understanding HEX and RGB codes allows you to maintain brand consistency and create cohesive color palettes for your products.</p>
+      <p class="blog-paragraph">Using AiColorExtractor, you can quickly generate professional color palettes from any image without installing software or plugins.</p>
+      <p class="blog-paragraph">The tool is perfect for t-shirt designs, mugs, posters, and digital graphics, ensuring every design is visually appealing and professional.</p>
+      <p class="blog-paragraph">Boost your productivity by copying color codes instantly to your design software, reducing time spent on manual color selection.</p>
+      <p class="blog-paragraph">AiColorExtractor supports all common image formats including JPG, PNG, and GIF, making it compatible with almost any project.</p>
+      <p class="blog-paragraph">Whether you are a beginner or professional designer, the tool streamlines your workflow and enhances creative output.</p>
+      <p class="blog-paragraph">Learn tips on color theory, branding, and design trends through our blog to optimize your products for the POD market.</p>
+      <p class="blog-paragraph">Keep your designs consistent across all platforms and products by using accurate HEX and RGB color extraction.</p>
+      <p class="blog-paragraph">Stay ahead of competitors by quickly generating color palettes and experimenting with new combinations to attract customers.</p>
+    </section>
   </main>
 
   <footer>
@@ -198,7 +214,7 @@
     function showPage(pageId) {
       document.querySelectorAll('.page').forEach(p => p.style.display='none');
       document.getElementById(pageId).style.display='block';
-      window.scrollTo(0,0); // scroll to top on page switch
+      window.scrollTo(0,0);
     }
 
     const uploader = document.getElementById("imageUploader"),
