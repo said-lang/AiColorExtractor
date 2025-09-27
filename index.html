@@ -4,9 +4,9 @@
   <meta name="google-site-verification" content="8hR6RZf_ZT4UrLHwiN4_kn3KZh06wkKg5Bd_VshePpg" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>🎨 AiColorExtractor | Free Online Color Palette Generator for Print on Demand Designs</title>
-  <meta name="description" content="AiColorExtractor is a free online color extractor tool for designers, print-on-demand sellers, and marketers. Quickly generate accurate HEX and RGB color palettes from any image. Boost your product branding, t-shirt, mug, and POD designs with our fast and reliable color picker tool.">
-  <meta name="keywords" content="AiColorExtractor, color extractor, color palette generator, HEX, RGB, print on demand tool, POD design, free online design tools, branding colors, t-shirt design colors, online color picker, palette finder">
+  <title>AiColorExtractor | Free Online Color Palette Generator for POD Designs</title>
+  <meta name="description" content="AiColorExtractor is a free online tool to extract colors from images, generate HEX and RGB codes, and create professional color palettes for t-shirts, mugs, and other print-on-demand products.">
+  <meta name="keywords" content="AiColorExtractor, color palette generator, extract colors from images, HEX codes, RGB codes, POD design tool, print on demand, online color tool, free color picker, branding colors, design marketing">
   <style>
     :root {
       --primary: #3b82f6;
@@ -16,74 +16,85 @@
       --text: #1f2937;
     }
     body {
-      margin:0; 
-      font-family:'Segoe UI', sans-serif; 
-      background:#f5f5f5; 
-      color:var(--text); 
-      display:flex; 
-      flex-direction:column; 
-      min-height:100vh;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
     header {
-      background:linear-gradient(90deg, var(--primary), var(--secondary)); 
-      color:white; 
-      padding:1rem 2rem; 
-      display:flex; 
-      align-items:center; 
-      box-shadow:0 4px 10px rgba(0,0,0,0.15);
-      position:sticky;
-      top:0;
-      z-index:10;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     }
-    header h1 {margin:0; font-size:1.6rem; cursor:pointer;}
-    nav {margin-left:auto;}
-    nav a {color:white; margin-left:1.5rem; text-decoration:none; font-weight:600; font-size:1rem;}
-    nav a:hover {text-decoration:underline;}
+    header h1 { margin: 0; font-size: 1.6rem; cursor: pointer; }
+    nav { margin-left: auto; }
+    nav a {
+      color: white; margin-left: 1.5rem; text-decoration: none; font-weight: 600; font-size: 1rem;
+    }
+    nav a:hover { text-decoration: underline; }
     main.container {
-      max-width:1000px; 
-      margin:2rem auto; 
-      padding:2rem; 
-      background:#fff; 
-      border-radius:12px; 
-      box-shadow:0 8px 24px rgba(0,0,0,0.1); 
-      flex:1;
+      max-width: 1000px; margin: 2rem auto; padding: 2rem; background: #fff;
+      border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); flex: 1;
     }
-    .intro {text-align:center; margin-bottom:1.5rem; font-size:1.1rem; line-height:1.6;}
-    .upload-box {margin:2rem auto; width:80%; padding:2.5rem 1rem; border:2px dashed var(--primary); border-radius:10px; background:#eff6ff; text-align:center;}
-    .upload-label {display:inline-block; background:var(--primary); color:#fff; padding:0.7rem 1.4rem; border-radius:8px; cursor:pointer; font-size:1rem; font-weight:600; transition:background 0.3s ease;}
-    .upload-label:hover {background:var(--secondary);}
-    #imageUploader {display:none;}
-    #fileStatus {margin-top:1rem; font-size:1rem; color:#555;}
-    #colorsTitle {font-size:1.6rem; margin:2rem 0 1rem; text-align:center; display:none; color:var(--secondary);}
-    #palette {display:flex; flex-wrap:wrap; justify-content:center; gap:1rem;}
-    .color-box {width:130px; height:130px; border-radius:12px; display:flex; flex-direction:column; justify-content:flex-end; align-items:center; padding:0.4rem; box-shadow:0 5px 12px rgba(0,0,0,0.15); cursor:pointer; transition:transform 0.2s ease;}
-    .color-box:hover {transform:scale(1.07);}
-    .color-code {background:rgba(0,0,0,0.65); color:white; padding:4px 8px; border-radius:5px; font-size:14px; margin-top:10px;}
-    .copied-msg {position:absolute; top:10px; background:var(--accent); color:white; font-size:12px; padding:2px 6px; border-radius:5px; opacity:0; transition:opacity 0.3s;}
-    .copied-msg.visible {opacity:1;}
-    #contactForm input, #contactForm textarea {width:100%; padding:0.9rem; margin-bottom:1rem; border:2px solid var(--primary); border-radius:8px; font-size:1rem; background:#f0f9ff;}
-    #contactForm textarea {height:220px; resize:vertical;}
-    h2.section-title {color:black; margin-top:2rem; text-align:left;}
-    .cta-paragraph {margin-top:1rem; font-weight:bold; font-size:1.1rem; text-align:center; color:var(--secondary);}
+    .intro { text-align: center; margin-bottom: 1.5rem; font-size: 1.1rem; line-height: 1.6; }
+    .upload-box {
+      margin: 2rem auto; width: 80%; padding: 2.5rem 1rem; border: 2px dashed var(--primary);
+      border-radius: 10px; background: #eff6ff; text-align: center;
+    }
+    .upload-label {
+      display: inline-block; background: var(--primary); color: #fff;
+      padding: 0.7rem 1.4rem; border-radius: 8px; cursor: pointer;
+      font-size: 1rem; font-weight: 600; transition: background 0.3s ease;
+    }
+    .upload-label:hover { background: var(--secondary); }
+    #imageUploader { display: none; }
+    #fileStatus { margin-top: 1rem; font-size: 1rem; color: #555; }
+    #colorsTitle { font-size: 1.6rem; margin: 2rem 0 1rem; text-align: center; display: none; color: var(--secondary); }
+    #palette { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+    .color-box {
+      width: 130px; height: 130px; border-radius: 12px;
+      display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
+      padding: 0.4rem; box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+      cursor: pointer; transition: transform 0.2s ease;
+    }
+    .color-box:hover { transform: scale(1.07); }
+    .color-code {
+      background: rgba(0,0,0,0.65); color: white;
+      padding: 4px 8px; border-radius: 5px; font-size: 14px; margin-top: 10px;
+    }
+    .copied-msg {
+      position: absolute; top: 10px; background: var(--accent);
+      color: white; font-size: 12px; padding: 2px 6px; border-radius: 5px;
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .copied-msg.visible { opacity: 1; }
+    .section-title { font-size: 1.4rem; font-weight: 700; color: #000; margin-bottom: 0.8rem; }
+    section.page { display: none; }
+    section.page.active { display: block; }
+    #contactForm input, #contactForm textarea {
+      width: 100%; padding: 0.9rem; margin-bottom: 1rem; border: 2px solid var(--primary);
+      border-radius: 8px; font-size: 1rem; background: #f0f9ff;
+    }
+    #contactForm textarea { height: 180px; resize: vertical; }
     footer {
-      background:linear-gradient(90deg, var(--primary), var(--accent)); 
-      color:white; 
-      text-align:center; 
-      padding:1rem; 
-      font-size:0.9rem; 
-      margin-top:auto;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      color: white; text-align: center; padding: 1rem;
+      font-size: 0.9rem;
     }
-    .footer-links {margin-top:0.5rem; display:flex; gap:1rem; font-size:0.8rem; flex-wrap:wrap; justify-content:center;}
-    .footer-links a {color:white; text-decoration:none;}
-    .footer-links a:hover {text-decoration:underline;}
-    .footer-subscribe {margin-top:0.5rem;}
-    .footer-subscribe input[type=email] {padding:0.5rem; border-radius:5px; border:1px solid #ccc;}
-    .footer-subscribe button {padding:0.5rem 1rem; border:none; border-radius:5px; background:var(--primary); color:white; cursor:pointer;}
+    .footer-links a { color:white; margin:0 0.5rem; text-decoration:underline; font-size:0.85rem; }
+    .faq-item { margin-bottom: 1rem; }
+    .faq-item h3 { font-weight:600; color: var(--primary); margin-bottom:0.3rem; }
   </style>
 </head>
 <body>
   <header>
-    <h1 onclick="showPage('home')">🎨 AiColorExtractor</h1>
+    <h1 onclick="showPage('home')">AiColorExtractor</h1>
     <nav>
       <a href="#home" onclick="showPage('home')">Home</a>
       <a href="#how" onclick="showPage('how')">How It Works</a>
@@ -92,10 +103,10 @@
   </header>
 
   <main class="container">
-    <!-- Home -->
-    <section id="home" class="page">
+    <!-- Home Page -->
+    <section id="home" class="page active">
       <div class="intro">
-        <p>Extract colors from any image instantly. AiColorExtractor helps designers, POD sellers, and marketers generate precise HEX and RGB color palettes for professional product designs, t-shirts, mugs, and more.</p>
+        <p>Extract colors from any image instantly with AiColorExtractor. Generate professional color palettes, HEX, and RGB codes for your print-on-demand designs efficiently and accurately.</p>
       </div>
       <div class="upload-box">
         <label for="imageUploader" class="upload-label">+ Add Images</label>
@@ -106,95 +117,74 @@
       <h2 id="colorsTitle">Colors Used in This Design</h2>
       <div id="palette"></div>
 
-      <h2 class="section-title">Discover AiColorExtractor Benefits</h2>
-      <p>AiColorExtractor instantly extracts vibrant color palettes from your images, helping you match colors perfectly for POD products, t-shirts, mugs, and more.</p>
-      <p>Supports HEX and RGB formats, giving you precise values for professional designs and branding consistency.</p>
-      <p>Enhances product marketing visuals with accurate color representation to increase sales appeal.</p>
-      <p>Easy-to-use interface for both beginners and professionals, reducing design time and effort.</p>
-      <p>Supports multiple image types and works seamlessly in modern web browsers without installation.</p>
-      <p>Improves workflow efficiency by enabling quick copying of color codes directly to your design software.</p>
-      <p>Free and accessible online tool to empower creators, designers, and marketers globally.</p>
-      <p class="cta-paragraph">Try AiColorExtractor now for free and elevate your POD designs to the next level!</p>
+      <!-- Informational Paragraphs -->
+      <div class="info-paragraphs">
+        <h2 class="section-title">Why Use AiColorExtractor?</h2>
+        <p>AiColorExtractor helps designers, marketers, and POD sellers extract accurate HEX and RGB colors from any image to create stunning product designs. It's fast, precise, and completely online.</p>
+        <p>The tool supports JPG, PNG, and GIF formats, making it flexible for any design workflow. Perfect for t-shirts, mugs, posters, and more.</p>
+        <p>Instant color extraction ensures you save time and maintain brand consistency across all products.</p>
+        <p>Generated palettes can be copied directly into design software or shared with your team effortlessly.</p>
+        <p>By providing accurate color codes, AiColorExtractor boosts productivity and creative efficiency.</p>
+        <p>Whether you are a professional designer or a hobbyist, this tool makes your workflow seamless and reliable.</p>
+        <p>Optimize your print-on-demand business with AiColorExtractor and elevate your product aesthetics using perfect color combinations.</p>
+      </div>
     </section>
 
     <!-- How It Works -->
-    <section id="how" class="page" style="display:none;">
+    <section id="how" class="page">
       <h2 class="section-title">How AiColorExtractor Works</h2>
-      <p>Upload your image using the "+ Add Images" button. The tool instantly analyzes the image pixels to detect dominant colors.</p>
-      <p>The extracted colors are displayed in HEX and RGB formats, allowing precise replication in your designs.</p>
-      <p>Click any color to copy it directly to your clipboard for quick integration into design software.</p>
-      <p>Supports batch processing and multiple designs without losing accuracy.</p>
-      <p>Perfect for POD sellers, designers, marketers, and anyone working with color-sensitive products.</p>
-      <p>Ensures accurate branding colors for product listings, websites, and marketing materials.</p>
-      <p>No registration or installation required, all processing is done instantly in your browser.</p>
+      <p>Simply upload an image using the upload button. The tool analyzes every pixel and generates a color palette automatically.</p>
+      <p>HEX and RGB codes for each color are displayed below the palette, allowing instant copying to clipboard.</p>
+      <p>This process is done entirely in your browser, ensuring privacy and speed without uploading images to any server.</p>
+      <p>Supported image formats include JPG, PNG, and GIF, making it compatible with most common files used in design projects.</p>
+      <p>Use the extracted colors to maintain brand consistency, create product mockups, and streamline your POD workflow efficiently.</p>
+      <p>AiColorExtractor is optimized for designers, marketers, and online sellers who need precise and professional color information instantly.</p>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" class="page" style="display:none;">
+    <!-- Contact Page -->
+    <section id="contact" class="page">
       <h2 class="section-title">Contact Us</h2>
-      <p>If you have questions, feedback, or suggestions, use the form below. We'll respond promptly to ensure your experience is smooth.</p>
+      <p>Have questions or feedback? Fill out the form below:</p>
       <form id="contactForm">
         <input type="text" id="name" placeholder="Your Name" required />
         <input type="email" id="email" placeholder="Your Email" required />
         <textarea id="message" placeholder="Write your message here..." required></textarea>
         <button type="submit" class="upload-label">Send Message</button>
       </form>
-      <p id="formMsg" style="margin-top:1rem; font-weight:bold; color:green; display:none;">✅ Thank you! Your message has been sent.</p>
+      <p id="formMsg" style="margin-top:1rem; font-weight:bold; color:green; display:none;">
+        ✅ Thank you! Your message has been sent.
+      </p>
     </section>
 
-    <!-- Blog -->
-    <section id="blog" class="page" style="display:none;">
-      <h2 class="section-title">Blog</h2>
-      <p>Welcome to AiColorExtractor Blog! Learn everything about color extraction, POD designs, HEX and RGB color usage, and tips for marketers and designers.</p>
-      <p>Understand the difference between HEX and RGB codes for accurate color reproduction.</p>
-      <p>Top 10 color palettes inspired by nature to enhance your product designs.</p>
-      <p>Step-by-step tutorials on extracting colors from images efficiently.</p>
-      <p>Advanced techniques for using extracted colors in t-shirts, mugs, and other POD products.</p>
-      <p>Tips to improve your e-commerce product branding with the right color choices.</p>
-      <p>How AiColorExtractor speeds up your design workflow.</p>
-      <p>Best practices for designers and marketers to maximize color impact.</p>
-      <p>Case studies showing color extraction boosting sales and engagement.</p>
-      <p>Guides on integrating AiColorExtractor with your favorite design software.</p>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" class="page" style="display:none;">
-      <h2 class="section-title">FAQ</h2>
-      <p><strong>Q:</strong> What formats are supported? <strong>A:</strong> AiColorExtractor supports all common image formats including JPG, PNG, and GIF.</p>
-      <p><strong>Q:</strong> Can I copy HEX and RGB codes? <strong>A:</strong> Yes, click any color box to copy codes instantly.</p>
-      <p><strong>Q:</strong> Is registration required? <strong>A:</strong> No, the tool is completely free and works without login.</p>
-      <p><strong>Q:</strong> Does it work offline? <strong>A:</strong> No, it requires an internet connection to operate in the browser.</p>
-    </section>
-
-    <!-- Privacy -->
-    <section id="privacy" class="page" style="display:none;">
-      <h2 class="section-title">Privacy Policy</h2>
-      <p>AiColorExtractor values your privacy. We do not store or upload any images you use. All color extraction is processed locally in your browser to ensure your data remains private and secure.</p>
-      <p>We do not collect personal information unless you submit it via the Contact form. Any email or name submitted is used solely to respond to your inquiry and will never be shared.</p>
-      <p>We may use cookies or local storage to enhance user experience and maintain session state, but no personal data is tracked or sold.</p>
-      <p>All interactions with AiColorExtractor are encrypted and secure. You can safely use our service without worrying about your images being stored online.</p>
-      <p>For more information on Google's Privacy & Terms, visit <a href="https://policies.google.com/" target="_blank" style="color:var(--primary)">Google Privacy & Terms</a>.</p>
-    </section>
-
-    <!-- Terms of Use -->
-    <section id="terms" class="page" style="display:none;">
-      <h2 class="section-title">Terms of Use</h2>
-      <p>AiColorExtractor is provided free of charge for personal and professional use. By using this tool, you agree to these terms and understand the scope of its functionality.</p>
-      <p>The tool aims to provide accurate color extraction in HEX and RGB formats, but we do not guarantee exact color accuracy across all devices and monitors.</p>
-      <p>Users are responsible for the proper use of extracted colors in their designs, branding, and marketing materials.</p>
-      <p>The service is provided as-is, without warranties. AiColorExtractor is not liable for any indirect or direct damages arising from its use.</p>
-      <p>All copyrights of uploaded images remain with the users. The tool does not claim ownership over any user-provided content.</p>
-      <p>We reserve the right to update, modify, or discontinue the service at any time without prior notice.</p>
+    <!-- FAQ Page -->
+    <section id="faq" class="page">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>Q: What formats are supported?</h3>
+        <p>A: AiColorExtractor supports all common image formats including JPG, PNG, and GIF.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Q: Can I copy HEX and RGB codes?</h3>
+        <p>A: Yes, click any color box to copy codes instantly to your clipboard.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Q: Is registration required?</h3>
+        <p>A: No, the tool is completely free and works without login or signup.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Q: Does it work offline?</h3>
+        <p>A: No, it requires an active internet connection to operate in the browser.</p>
+      </div>
     </section>
   </main>
 
   <footer>
     <div>&copy; 2025 AiColorExtractor. All rights reserved.</div>
     <div class="footer-links">
-      <a href="#blog" onclick="showPage('blog')">Blog</a>
       <a href="#faq" onclick="showPage('faq')">FAQ</a>
       <a href="#privacy" onclick="showPage('privacy')">Privacy Policy</a>
       <a href="#terms" onclick="showPage('terms')">Terms of Use</a>
+      <a href="#blog" onclick="showPage('blog')">Blog</a>
     </div>
     <div class="footer-subscribe">
       <form id="subscribeForm" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
