@@ -1,278 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AiColorExtractor | Free Online Color Palette Generator</title>
-  <meta name="description" content="AiColorExtractor is a free online tool that extracts HEX and RGB codes from images. Create professional color palettes for print-on-demand designs, branding, and digital art projects." />
-  <meta name="keywords" content="AiColorExtractor, color palette generator, extract colors from image, HEX codes, RGB codes, free online tool, design tool, POD, print on demand, graphic design, branding colors" />
-
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6305026575497086"
-     crossorigin="anonymous"></script>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AiColorExtractor - Free Online Color Picker Tool</title>
+  <meta name="description" content="AiColorExtractor is a powerful online tool to extract HEX and RGB color codes from any image. Free, fast, and accurate color extractor for designers, artists, and web developers. Learn how it works, explore benefits, and get the best color palette ideas. Try AiColorExtractor now.">
+  <meta name="google-adsense-account" content="ca-pub-6305026575497086">
   <style>
-    :root {
-      --primary: #3b82f6;
-      --secondary: #f43f5e;
-      --accent: #22c55e;
-      --bg: #ffffff;
-      --text: #1f2937;
-    }
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      color: #333;
     }
     header {
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-      color: white;
-      padding: 1rem 2rem;
+      background: #222;
+      color: #fff;
+      padding: 15px 30px;
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     }
-    header h1 { margin: 0; font-size: 1.6rem; cursor: pointer; }
-    nav { margin-left: auto; }
+    header h1 {
+      margin: 0;
+      font-size: 22px;
+    }
     nav a {
-      color: white; margin-left: 1.5rem; text-decoration: none; font-weight: 600; font-size: 1rem;
+      color: #fff;
+      margin-left: 15px;
+      text-decoration: none;
+      font-weight: bold;
     }
     nav a:hover { text-decoration: underline; }
-    main.container {
-      max-width: 1000px; margin: 2rem auto; padding: 2rem; background: #fff;
-      border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); flex: 1;
+    main {
+      padding: 30px;
+      background: #fff;
+      max-width: 1000px;
+      margin: 20px auto;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-    .intro { text-align: center; margin-bottom: 1.5rem; font-size: 1.1rem; line-height: 1.6; }
-    .upload-box {
-      margin: 2rem auto; width: 80%; padding: 2.5rem 1rem; border: 2px dashed var(--primary);
-      border-radius: 10px; background: #eff6ff; text-align: center;
-    }
-    .upload-label {
-      display: inline-block; background: var(--primary); color: #fff;
-      padding: 0.7rem 1.4rem; border-radius: 8px; cursor: pointer;
-      font-size: 1rem; font-weight: 600; transition: background 0.3s ease;
-    }
-    .upload-label:hover { background: var(--secondary); }
-    #imageUploader { display: none; }
-    #fileStatus { margin-top: 1rem; font-size: 1rem; color: #555; }
-    #colorsTitle { font-size: 1.6rem; margin: 2rem 0 1rem; text-align: center; display: none; color: var(--secondary); }
-    #palette { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
-    .color-box {
-      width: 130px; height: 130px; border-radius: 12px;
-      display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
-      padding: 0.4rem; box-shadow: 0 5px 12px rgba(0,0,0,0.15);
-      cursor: pointer; transition: transform 0.2s ease;
-    }
-    .color-box:hover { transform: scale(1.07); }
-    .color-code {
-      background: rgba(0,0,0,0.65); color: white;
-      padding: 4px 8px; border-radius: 5px; font-size: 14px; margin-top: 10px;
-    }
-    .copied-msg {
-      position: absolute; top: 10px; background: var(--accent);
-      color: white; font-size: 12px; padding: 2px 6px; border-radius: 5px;
-      opacity: 0; transition: opacity 0.3s;
-    }
-    .copied-msg.visible { opacity: 1; }
-    .section-title { font-size: 1.4rem; font-weight: 700; color: #000; margin-bottom: 0.8rem; }
-    section.page { display: none; }
-    section.page.active { display: block; }
-    #contactForm input, #contactForm textarea { width: 100%; padding: 0.9rem; margin-bottom: 1rem; border: 2px solid var(--primary); border-radius: 8px; font-size: 1rem; background: #f0f9ff; }
-    #contactForm textarea { height: 180px; resize: vertical; }
+    h2 { color: #000; margin-top: 40px; }
     footer {
-      background: linear-gradient(90deg, var(--primary), var(--accent));
-      color: white; text-align: center; padding: 1rem;
-      font-size: 0.9rem; margin-top: auto;
+      background: #222;
+      color: #fff;
+      padding: 20px 30px;
+      text-align: center;
     }
-    .footer-links a { color:white; margin:0 0.5rem; text-decoration:underline; font-size:0.85rem; }
-    .faq-item, .policy-paragraph, .terms-paragraph, .blog-paragraph { margin-bottom: 1rem; line-height:1.6; }
-    .faq-item h3, .policy-paragraph strong, .terms-paragraph strong { font-weight:600; color: var(--primary); margin-bottom:0.3rem; }
+    footer a {
+      color: #ddd;
+      margin: 0 10px;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    footer a:hover { color: #fff; text-decoration: underline; }
+    section { display: none; }
+    section.active { display: block; }
+    .color-box { display: inline-block; width: 60px; height: 60px; margin: 5px; cursor: pointer; border: 1px solid #ccc; }
+    .faq-item { margin-bottom: 15px; }
+    .faq-item h3 { margin: 5px 0; color: #000; }
+    form {
+      max-width: 600px;
+      margin: auto;
+      background: #fafafa;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    form button {
+      padding: 12px 20px;
+      background: #222;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    form button:hover { background: #444; }
+    #formMsg { display: none; color: green; text-align: center; margin-top: 10px; }
   </style>
 </head>
 <body>
   <header>
-    <h1 onclick="showPage('home')">AiColorExtractor</h1>
+    <h1>AiColorExtractor</h1>
     <nav>
-      <a href="#home" onclick="showPage('home')">Home</a>
-      <a href="#how" onclick="showPage('how')">How It Works</a>
-      <a href="#contact" onclick="showPage('contact')">Contact</a>
+      <a href="#" onclick="showPage('home')">Home</a>
+      <a href="#" onclick="showPage('how')">How It Works</a>
+      <a href="#" onclick="showPage('contact')">Contact</a>
     </nav>
   </header>
 
-  <main class="container">
+  <main>
     <!-- Home Page -->
-    <section id="home" class="page active">
-      <div class="intro">
-        <p>Extract colors from any image instantly with AiColorExtractor. Generate professional color palettes, HEX, and RGB codes for your print-on-demand designs efficiently and accurately.</p>
-      </div>
-      <div class="upload-box">
-        <label for="imageUploader" class="upload-label">+ Add Images</label>
-        <input type="file" id="imageUploader" accept="image/*" />
-        <p id="fileStatus">No files have been selected yet</p>
-      </div>
-      <canvas id="canvas" style="display:none;"></canvas>
-      <h2 id="colorsTitle">Colors Used in This Design</h2>
-      <div id="palette"></div>
+    <section id="home" class="active">
+      <h1>AiColorExtractor</h1>
+      <p>Upload an image to extract its colors. AiColorExtractor instantly generates accurate HEX and RGB codes for designers, developers, and creators.</p>
+      <input type="file" id="imageInput" accept="image/*"><br><br>
+      <canvas id="canvas" style="max-width:100%; border:1px solid #ddd;"></canvas>
+      <div id="colorPalette"></div>
+
+      <h2>About AiColorExtractor</h2>
+      <p>AiColorExtractor is an advanced online tool that makes it easy to identify and copy HEX and RGB codes directly from any image. Whether you’re a designer, digital artist, or web developer, this tool saves you time and effort.</p>
+      <p>It supports all major image formats including JPG, PNG, and GIF. Extract color palettes quickly and copy them instantly for your creative projects.</p>
+      <p>Using AiColorExtractor is simple: upload an image, view the extracted colors, and click on a color to copy its code to your clipboard.</p>
+      <p>This tool is completely free, requires no registration, and works directly in your browser.</p>
+      <p>From website design to branding, AiColorExtractor helps you discover color combinations and palettes that boost your creative workflow.</p>
     </section>
 
     <!-- How It Works -->
-    <section id="how" class="page">
-      <h2 class="section-title">How It Works</h2>
-      <p>AiColorExtractor works by analyzing every pixel of your uploaded image and extracting the most dominant and relevant colors. It instantly generates accurate HEX and RGB codes that you can use in your design tools, POD platforms, or branding guidelines.</p>
-      <p>This online color palette generator is ideal for designers, print-on-demand entrepreneurs, digital artists, and anyone who needs to maintain visual consistency across projects. With one click, you can copy the extracted colors and use them in Photoshop, Canva, Illustrator, or your favorite design tool.</p>
-      <p>All processing happens in your browser, which means your files remain private, and no data is stored on our servers. AiColorExtractor supports popular formats like JPG, PNG, and GIF, making it accessible for a wide variety of creative projects.</p>
+    <section id="how">
+      <h2>How AiColorExtractor Works</h2>
+      <p>AiColorExtractor uses smart algorithms to scan your uploaded image and extract the most prominent and accurate colors. Each extracted color is shown with its HEX and RGB values, ready to copy and use instantly.</p>
+      <p>Steps to use the tool:</p>
+      <ul>
+        <li>Click “Choose File” to upload your image (JPG, PNG, GIF).</li>
+        <li>The tool analyzes the image and displays color swatches below.</li>
+        <li>Click any swatch to copy HEX and RGB codes.</li>
+        <li>Paste the codes into your design software or project.</li>
+      </ul>
     </section>
 
-    <!-- Contact Page -->
-    <section id="contact" class="page">
-      <h2 class="section-title">Contact Us</h2>
-      <p>If you have questions, feedback, or collaboration inquiries, feel free to reach out using the form below. We value your input and aim to respond quickly to every message.</p>
+    <!-- Contact -->
+    <section id="contact">
+      <h2>Contact Us</h2>
       <form id="contactForm">
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="Your Email" required />
-        <textarea placeholder="Your Message" required></textarea>
-        <button type="submit" class="upload-label">Send Message</button>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea rows="6" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+        <p id="formMsg">Thank you for your message!</p>
       </form>
-      <p id="formMsg" style="display:none; color:var(--accent); font-weight:600;">Thank you for contacting us! We'll reply shortly.</p>
     </section>
 
-    <!-- FAQ Page -->
-    <section id="faq" class="page">
-      <h2 class="section-title">Frequently Asked Questions</h2>
+    <!-- FAQ -->
+    <section id="faq">
+      <h2>FAQ</h2>
       <div class="faq-item">
-        <h3>What formats are supported?</h3>
-        <p>AiColorExtractor supports popular image formats such as JPG, PNG, and GIF, ensuring flexibility for designers and POD creators.</p>
+        <h3>Q: What formats are supported?</h3>
+        <p>A: AiColorExtractor supports JPG, PNG, and GIF formats.</p>
       </div>
       <div class="faq-item">
-        <h3>Can I copy HEX and RGB codes?</h3>
-        <p>Yes, simply click any extracted color box to copy its HEX code instantly, making it easy to paste into your design tools.</p>
+        <h3>Q: Can I copy HEX and RGB codes?</h3>
+        <p>A: Yes, click on any color swatch to copy codes instantly.</p>
       </div>
       <div class="faq-item">
-        <h3>Is registration required?</h3>
-        <p>No, AiColorExtractor is completely free to use without any sign-up or registration required.</p>
+        <h3>Q: Is registration required?</h3>
+        <p>A: No, AiColorExtractor is free and works without login.</p>
       </div>
       <div class="faq-item">
-        <h3>Does it work offline?</h3>
-        <p>No, the tool requires an internet connection as it works directly in your web browser.</p>
+        <h3>Q: Does it work offline?</h3>
+        <p>A: No, it requires an internet connection to work.</p>
       </div>
     </section>
 
-    <!-- Privacy Policy Page -->
-    <section id="privacy" class="page">
-      <h2 class="section-title">Privacy Policy</h2>
-      <p class="policy-paragraph"><strong>Data Security:</strong> AiColorExtractor values your privacy. We do not store, share, or sell any images or personal information uploaded to our tool. All processing happens locally in your browser.</p>
-      <p class="policy-paragraph"><strong>Cookies & Analytics:</strong> We may use cookies and anonymous analytics to improve the user experience, monitor traffic, and understand how visitors interact with the site.</p>
-      <p class="policy-paragraph"><strong>Third-Party Services:</strong> Google Ads and related services may collect non-personal data for advertising purposes. By using this site, you agree to Google’s <a href="https://policies.google.com/technologies/ads" target="_blank">Privacy & Terms</a>.</p>
-      <p class="policy-paragraph"><strong>User Rights:</strong> You may disable cookies in your browser at any time, but some site features may be limited. We are committed to keeping your browsing safe and transparent.</p>
+    <!-- Privacy Policy -->
+    <section id="privacy">
+      <h2>Privacy Policy</h2>
+      <p>AiColorExtractor values your privacy. We do not store uploaded images or extracted colors. All processing is done locally in your browser. We may use third-party services like Google Analytics and AdSense, which may collect cookies to improve user experience.</p>
+      <p>By using AiColorExtractor, you agree to this privacy policy. For more details, please review Google’s Privacy & Terms.</p>
     </section>
 
-    <!-- Terms of Use Page -->
-    <section id="terms" class="page">
-      <h2 class="section-title">Terms of Use</h2>
-      <p class="terms-paragraph"><strong>Free Access:</strong> AiColorExtractor is a free tool provided to help designers, students, and businesses extract accurate color codes for creative work.</p>
-      <p class="terms-paragraph"><strong>No Misuse:</strong> Users agree not to misuse the tool for illegal purposes or attempt to reverse engineer the software.</p>
-      <p class="terms-paragraph"><strong>Disclaimer:</strong> While we strive for accuracy, AiColorExtractor does not guarantee flawless color detection in all scenarios. Users are responsible for validating extracted values for professional use.</p>
-      <p class="terms-paragraph"><strong>Changes:</strong> We may update these terms at any time to improve functionality, comply with regulations, or expand the service.</p>
+    <!-- Terms of Use -->
+    <section id="terms">
+      <h2>Terms of Use</h2>
+      <p>By using AiColorExtractor, you agree to use the service only for legal and ethical purposes. We provide the tool as-is, without guarantees of availability or accuracy. You may not attempt to misuse or reverse-engineer the application.</p>
+      <p>We reserve the right to update or change these terms without notice.</p>
     </section>
 
-    <!-- Blog Page -->
-    <section id="blog" class="page">
-      <h2 class="section-title">Blog</h2>
-      <p class="blog-paragraph">Welcome to the AiColorExtractor Blog, where we share tips, tutorials, and insights about color palettes, design workflows, and print-on-demand strategies.</p>
-      <p class="blog-paragraph">📌 <strong>What is the difference between HEX and RGB codes?</strong> HEX codes represent digital color values in hexadecimal format, while RGB describes colors in terms of Red, Green, and Blue values. Designers often use both depending on the software and project requirements.</p>
-      <p class="blog-paragraph">📌 <strong>Top 10 Nature-Inspired Color Palettes:</strong> From forest greens to ocean blues, discover beautiful palettes you can extract with AiColorExtractor to inspire your designs.</p>
-      <p class="blog-paragraph">📌 <strong>Boosting Print-on-Demand Sales:</strong> Consistent color branding improves trust and recognition. Learn how to use our tool to match colors across all your POD products.</p>
-      <p class="blog-paragraph">📌 <strong>Designing with Confidence:</strong> Whether you’re creating digital art, business branding, or merchandise, AiColorExtractor ensures that your colors remain consistent and professional.</p>
-      <p class="blog-paragraph">📌 <strong>Why Color Consistency Matters:</strong> In marketing, brand colors increase recognition by up to 80%. Using AiColorExtractor helps you achieve precise consistency.</p>
+    <!-- Blog -->
+    <section id="blog">
+      <h2>Blog</h2>
+      <p>Welcome to the AiColorExtractor Blog. Here we share articles, tips, and guides about color theory, design, and creative workflows.</p>
+      <p><strong>What is the difference between HEX and RGB codes?</strong> HEX codes represent colors in hexadecimal format, while RGB codes describe the Red, Green, and Blue values that create a color.</p>
+      <p><strong>Top 10 Nature-Inspired Color Palettes.</strong> Designers often find inspiration in nature. We showcase 10 stunning palettes inspired by oceans, forests, and sunsets.</p>
+      <p><strong>Why color is important in branding.</strong> Learn how the right colors can improve your brand identity and make it memorable for your audience.</p>
     </section>
   </main>
 
   <footer>
-    <div>&copy; 2025 AiColorExtractor. All rights reserved.</div>
-    <div class="footer-links">
-      <a href="#faq" onclick="showPage('faq')">FAQ</a>
-      <a href="#privacy" onclick="showPage('privacy')">Privacy Policy</a>
-      <a href="#terms" onclick="showPage('terms')">Terms of Use</a>
-      <a href="#blog" onclick="showPage('blog')">Blog</a>
-    </div>
+    <a href="#" onclick="showPage('faq')">FAQ</a>
+    <a href="#" onclick="showPage('privacy')">Privacy Policy</a>
+    <a href="#" onclick="showPage('terms')">Terms of Use</a>
+    <a href="#" onclick="showPage('blog')">Blog</a>
   </footer>
 
   <script>
-    function showPage(pageId) {
-      document.querySelectorAll('.page').forEach(p => p.style.display='none');
-      document.getElementById(pageId).style.display='block';
+    function showPage(pageId){
+      document.querySelectorAll('main section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(pageId).classList.add('active');
       window.scrollTo(0,0);
     }
 
-    const uploader = document.getElementById("imageUploader"),
-          fileStatus = document.getElementById("fileStatus"),
-          canvas = document.getElementById("canvas"),
-          ctx = canvas.getContext("2d"),
-          palette = document.getElementById("palette"),
-          colorsTitle = document.getElementById("colorsTitle");
+    // Image color extraction
+    const imageInput=document.getElementById('imageInput');
+    const canvas=document.getElementById('canvas');
+    const ctx=canvas.getContext('2d');
+    const colorPalette=document.getElementById('colorPalette');
 
-    uploader.addEventListener("change", e => {
-      const file = e.target.files[0];
-      fileStatus.textContent = file ? `Selected file: ${file.name}` : "No files have been selected yet";
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = ev => {
-        const img = new Image();
-        img.src = ev.target.result;
-        img.onload = () => {
-          const scale = Math.min(300/img.width, 300/img.height, 1),
-                width = Math.floor(img.width*scale),
-                height = Math.floor(img.height*scale);
-          canvas.width = width; canvas.height = height;
-          ctx.drawImage(img,0,0,width,height);
-          extractColors(width,height);
-        };
-      };
-      reader.readAsDataURL(file);
+    imageInput.addEventListener('change', e=>{
+      const file=e.target.files[0];
+      if(!file) return;
+      const img=new Image();
+      img.onload=function(){
+        canvas.width=img.width;
+        canvas.height=img.height;
+        ctx.drawImage(img,0,0);
+        extractColors();
+      }
+      img.src=URL.createObjectURL(file);
     });
 
-    function extractColors(w,h) {
-      const data = ctx.getImageData(0,0,w,h).data,
-            map = new Map(), step = 10;
-      for (let i=0;i<data.length;i+=4*step){
-        const key=`${data[i]},${data[i+1]},${data[i+2]}`;
-        map.set(key,(map.get(key)||0)+1);
+    function extractColors(){
+      const data=ctx.getImageData(0,0,canvas.width,canvas.height).data;
+      let colors={};
+      for(let i=0;i<data.length;i+=4){
+        const rgb=`${data[i]},${data[i+1]},${data[i+2]}`;
+        colors[rgb]=(colors[rgb]||0)+1;
       }
-      const sorted = Array.from(map.entries()).sort((a,b)=>b[1]-a[1]).slice(0,6)
-                     .map(([rgb])=>{const [r,g,b]=rgb.split(',').map(Number); return {rgb:`rgb(${r},${g},${b})`,hex:rgbToHex(r,g,b)};});
-      displayPalette(sorted);
-    }
-
-    function rgbToHex(r,g,b){return"#"+[r,g,b].map(x=>x.toString(16).padStart(2,"0")).join("").toUpperCase();}
-
-    function displayPalette(colors){
-      palette.innerHTML=""; colorsTitle.style.display="block";
-      colors.forEach(c=>{
-        const box=document.createElement("div"); 
-        box.className="color-box"; 
-        box.style.backgroundColor=c.rgb;
-        const code=document.createElement("div"); 
-        code.className="color-code"; 
-        code.textContent=c.hex;
-        const msg=document.createElement("div"); 
-        msg.className="copied-msg"; 
-        msg.textContent="Copied!";
-        box.append(msg,code); 
-        palette.appendChild(box);
-        box.addEventListener("click",()=>{navigator.clipboard.writeText(c.hex).then(()=>{msg.classList.add("visible"); setTimeout(()=>msg.classList.remove("visible"),1500);});});
+      const sorted=Object.entries(colors).sort((a,b)=>b[1]-a[1]).slice(0,10);
+      colorPalette.innerHTML='';
+      sorted.forEach(([rgb])=>{
+        const hex=rgbToHex(rgb.split(',').map(Number));
+        const box=document.createElement('div');
+        box.className='color-box';
+        box.style.background=`rgb(${rgb})`;
+        box.title=`HEX: ${hex} | RGB: ${rgb}`;
+        box.onclick=()=>navigator.clipboard.writeText(`#${hex}`);
+        colorPalette.appendChild(box);
       });
     }
+    function rgbToHex([r,g,b]){
+      return [r,g,b].map(x=>x.toString(16).padStart(2,'0')).join('');
+    }
 
-    const contactForm = document.getElementById("contactForm"),
-          formMsg = document.getElementById("formMsg");
-    contactForm?.addEventListener("submit",e=>{
-      e.preventDefault(); 
-      contactForm.reset(); 
-      formMsg.style.display="block"; 
+    // Contact form
+    const contactForm=document.getElementById('contactForm');
+    const formMsg=document.getElementById('formMsg');
+    contactForm.addEventListener("submit",e=>{
+      e.preventDefault();
+      contactForm.reset();
+      formMsg.style.display="block";
       setTimeout(()=>formMsg.style.display="none",4000);
     });
   </script>
