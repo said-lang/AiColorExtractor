@@ -21,10 +21,7 @@
       justify-content: space-between;
       align-items: center;
     }
-    header h1 {
-      margin: 0;
-      font-size: 22px;
-    }
+    header h1 { margin: 0; font-size: 22px; }
     nav a {
       color: #fff;
       margin-left: 15px;
@@ -56,30 +53,24 @@
     footer a:hover { color: #fff; text-decoration: underline; }
     section { display: none; }
     section.active { display: block; }
-    .color-box { display: inline-block; width: 60px; height: 60px; margin: 5px; cursor: pointer; border: 1px solid #ccc; }
+    .color-box {
+      display: inline-block; width: 60px; height: 60px;
+      margin: 5px; cursor: pointer; border: 1px solid #ccc;
+    }
     .faq-item { margin-bottom: 15px; }
     .faq-item h3 { margin: 5px 0; color: #000; }
     form {
-      max-width: 600px;
-      margin: auto;
-      background: #fafafa;
-      padding: 20px;
-      border-radius: 8px;
+      max-width: 600px; margin: auto; background: #fafafa;
+      padding: 20px; border-radius: 8px;
       box-shadow: 0 0 5px rgba(0,0,0,0.1);
     }
     form input, form textarea {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 6px;
+      width: 100%; padding: 12px; margin: 10px 0;
+      border: 1px solid #ccc; border-radius: 6px;
     }
     form button {
-      padding: 12px 20px;
-      background: #222;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
+      padding: 12px 20px; background: #222;
+      color: #fff; border: none; border-radius: 6px;
       cursor: pointer;
     }
     form button:hover { background: #444; }
@@ -90,15 +81,15 @@
   <header>
     <h1>AiColorExtractor</h1>
     <nav>
-      <a href="#" onclick="showPage('home')">Home</a>
-      <a href="#" onclick="showPage('how')">How It Works</a>
-      <a href="#" onclick="showPage('contact')">Contact</a>
+      <a href="#home">Home</a>
+      <a href="#how">How It Works</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
   <main>
-    <!-- Home Page -->
-    <section id="home" class="active">
+    <!-- Home -->
+    <section id="home">
       <h1>AiColorExtractor</h1>
       <p>Upload an image to extract its colors. AiColorExtractor instantly generates accurate HEX and RGB codes for designers, developers, and creators.</p>
       <input type="file" id="imageInput" accept="image/*"><br><br>
@@ -117,7 +108,6 @@
     <section id="how">
       <h2>How AiColorExtractor Works</h2>
       <p>AiColorExtractor uses smart algorithms to scan your uploaded image and extract the most prominent and accurate colors. Each extracted color is shown with its HEX and RGB values, ready to copy and use instantly.</p>
-      <p>Steps to use the tool:</p>
       <ul>
         <li>Click “Choose File” to upload your image (JPG, PNG, GIF).</li>
         <li>The tool analyzes the image and displays color swatches below.</li>
@@ -166,7 +156,7 @@
       <p>By using AiColorExtractor, you agree to this privacy policy. For more details, please review Google’s Privacy & Terms.</p>
     </section>
 
-    <!-- Terms of Use -->
+    <!-- Terms -->
     <section id="terms">
       <h2>Terms of Use</h2>
       <p>By using AiColorExtractor, you agree to use the service only for legal and ethical purposes. We provide the tool as-is, without guarantees of availability or accuracy. You may not attempt to misuse or reverse-engineer the application.</p>
@@ -184,18 +174,21 @@
   </main>
 
   <footer>
-    <a href="#" onclick="showPage('faq')">FAQ</a>
-    <a href="#" onclick="showPage('privacy')">Privacy Policy</a>
-    <a href="#" onclick="showPage('terms')">Terms of Use</a>
-    <a href="#" onclick="showPage('blog')">Blog</a>
+    <a href="#faq">FAQ</a>
+    <a href="#privacy">Privacy Policy</a>
+    <a href="#terms">Terms of Use</a>
+    <a href="#blog">Blog</a>
   </footer>
 
   <script>
-    function showPage(pageId){
-      document.querySelectorAll('main section').forEach(sec => sec.classList.remove('active'));
-      document.getElementById(pageId).classList.add('active');
-      window.scrollTo(0,0);
+    function showSectionFromHash(){
+      const hash = window.location.hash.substring(1) || "home";
+      document.querySelectorAll("main section").forEach(sec=>sec.classList.remove("active"));
+      const activeSection=document.getElementById(hash);
+      if(activeSection){ activeSection.classList.add("active"); }
     }
+    window.addEventListener("hashchange", showSectionFromHash);
+    window.addEventListener("load", showSectionFromHash);
 
     // Image color extraction
     const imageInput=document.getElementById('imageInput');
@@ -203,18 +196,20 @@
     const ctx=canvas.getContext('2d');
     const colorPalette=document.getElementById('colorPalette');
 
-    imageInput.addEventListener('change', e=>{
-      const file=e.target.files[0];
-      if(!file) return;
-      const img=new Image();
-      img.onload=function(){
-        canvas.width=img.width;
-        canvas.height=img.height;
-        ctx.drawImage(img,0,0);
-        extractColors();
-      }
-      img.src=URL.createObjectURL(file);
-    });
+    if(imageInput){
+      imageInput.addEventListener('change', e=>{
+        const file=e.target.files[0];
+        if(!file) return;
+        const img=new Image();
+        img.onload=function(){
+          canvas.width=img.width;
+          canvas.height=img.height;
+          ctx.drawImage(img,0,0);
+          extractColors();
+        }
+        img.src=URL.createObjectURL(file);
+      });
+    }
 
     function extractColors(){
       const data=ctx.getImageData(0,0,canvas.width,canvas.height).data;
@@ -242,12 +237,14 @@
     // Contact form
     const contactForm=document.getElementById('contactForm');
     const formMsg=document.getElementById('formMsg');
-    contactForm.addEventListener("submit",e=>{
-      e.preventDefault();
-      contactForm.reset();
-      formMsg.style.display="block";
-      setTimeout(()=>formMsg.style.display="none",4000);
-    });
+    if(contactForm){
+      contactForm.addEventListener("submit",e=>{
+        e.preventDefault();
+        contactForm.reset();
+        formMsg.style.display="block";
+        setTimeout(()=>formMsg.style.display="none",4000);
+      });
+    }
   </script>
 </body>
 </html>
